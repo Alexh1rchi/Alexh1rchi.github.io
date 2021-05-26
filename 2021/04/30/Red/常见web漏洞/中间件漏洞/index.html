@@ -1,0 +1,215 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>中间件漏洞 | Alexchihir'blog</title><meta name="keywords" content="web安全"><meta name="author" content="Alexhirchi"><meta name="copyright" content="Alexhirchi"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="中间件概述：web容器将其他格式的文件解析为可执行脚本语言，攻击者可以利用这个特征去执行一些攻击行为。 产生条件  命名规则  搭建平台   IISIIS5.x-6.x该类服务器大多为windows server 2003，网站比较古老，开发语句一般为asp;该解析漏洞也只能解析asp文件，而不能解析aspx文件。  目录解析 形式：www.xxx.com&#x2F;xx.asp&#x2F;xx.jpg 服务器默认会">
+<meta property="og:type" content="article">
+<meta property="og:title" content="中间件漏洞">
+<meta property="og:url" content="http://example.com/2021/04/30/Red/%E5%B8%B8%E8%A7%81web%E6%BC%8F%E6%B4%9E/%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%BC%8F%E6%B4%9E/index.html">
+<meta property="og:site_name" content="Alexchihir&#39;blog">
+<meta property="og:description" content="中间件概述：web容器将其他格式的文件解析为可执行脚本语言，攻击者可以利用这个特征去执行一些攻击行为。 产生条件  命名规则  搭建平台   IISIIS5.x-6.x该类服务器大多为windows server 2003，网站比较古老，开发语句一般为asp;该解析漏洞也只能解析asp文件，而不能解析aspx文件。  目录解析 形式：www.xxx.com&#x2F;xx.asp&#x2F;xx.jpg 服务器默认会">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg">
+<meta property="article:published_time" content="2021-04-29T18:39:49.000Z">
+<meta property="article:modified_time" content="2021-04-30T03:12:52.795Z">
+<meta property="article:author" content="Alexhirchi">
+<meta property="article:tag" content="web安全">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2021/04/30/Red/%E5%B8%B8%E8%A7%81web%E6%BC%8F%E6%B4%9E/%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%BC%8F%E6%B4%9E/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-04-30 03:12:52'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Alexchihir'blog" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/show/test.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">12</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Alexchihir'blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">中间件漏洞</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-04-29T18:39:49.000Z" title="发表于 2021-04-29 18:39:49">2021-04-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-04-30T03:12:52.795Z" title="更新于 2021-04-30 03:12:52">2021-04-30</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Red/">Red</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Red/%E5%B8%B8%E8%A7%81web%E6%BC%8F%E6%B4%9E/">常见web漏洞</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="中间件漏洞"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="中间件"><a href="#中间件" class="headerlink" title="中间件"></a>中间件</h1><p>概述：web容器将其他格式的文件解析为可执行脚本语言，攻击者可以利用这个特征去执行一些攻击行为。</p>
+<p>产生条件</p>
+<ul>
+<li><p>命名规则</p>
+</li>
+<li><p>搭建平台</p>
+</li>
+</ul>
+<h2 id="IIS"><a href="#IIS" class="headerlink" title="IIS"></a>IIS</h2><h3 id="IIS5-x-6-x"><a href="#IIS5-x-6-x" class="headerlink" title="IIS5.x-6.x"></a>IIS5.x-6.x</h3><p>该类服务器大多为windows server 2003，网站比较古老，开发语句一般为asp;该解析漏洞也只能解析asp文件，而不能解析aspx文件。</p>
+<ul>
+<li><p>目录解析</p>
+<p>形式：<a target="_blank" rel="noopener" href="http://www.xxx.com/xx.asp/xx.jpg">www.xxx.com/xx.asp/xx.jpg</a></p>
+<p>服务器默认会把<code>.asp</code>目录下的文件都解析成 asp 文件。</p>
+</li>
+<li><p>文件解析</p>
+<p>形式：<a target="_blank" rel="noopener" href="http://www.xxx.com/xx.asp;.jpg">www.xxx.com/xx.asp;.jpg</a></p>
+<p><strong>服务器默认不解析 <code>;</code> 号后面的内容</strong>，<code>xx.asp;.jpg</code>被解析成asp文件</p>
+</li>
+<li><p>解析文件类型</p>
+<p>IIS 6.0 默认的可执行文件除了asp还包含 :</p>
+<ul>
+<li>/test.asa</li>
+<li>/test.cer</li>
+<li>/test.cdx</li>
+</ul>
+</li>
+</ul>
+<h3 id="IIS6-0-CVE-缓冲区溢出"><a href="#IIS6-0-CVE-缓冲区溢出" class="headerlink" title="IIS6.0 CVE 缓冲区溢出"></a>IIS6.0 CVE 缓冲区溢出</h3><ul>
+<li><p>CVE-2017-7269</p>
+<p>PROPFIND 缓冲区栈溢出漏洞导致远程代码随意执行</p>
+</li>
+</ul>
+<h3 id="IIS7-0-IIS7-5"><a href="#IIS7-0-IIS7-5" class="headerlink" title="IIS7.0-IIS7.5"></a>IIS7.0-IIS7.5</h3><p>畸形漏洞解析漏洞</p>
+<p>在默认Fast-CGI开启状态下，在原路径的jpg文件后加上 <code>/xx.php</code> 内容，即访问路径为  xxx.jpg/.php，会以被解析为php文件</p>
+<p>形式：<a target="_blank" rel="noopener" href="http://www.xxx.com/xx.jpg/.php">www.xxx.com/xx.jpg/.php</a></p>
+<h3 id="PUT漏洞"><a href="#PUT漏洞" class="headerlink" title="PUT漏洞"></a>PUT漏洞</h3><p>漏洞描述：IIS 服务器开启 WebDAV  且配置了可写入权限。可以直接使用HTTP的 <strong>PUT请求写入任意文件</strong></p>
+<h3 id="Windows特性"><a href="#Windows特性" class="headerlink" title="Windows特性"></a>Windows特性</h3><p>漏洞描述：Windows不允许空格和点以及一些特殊字符作为结尾，创建这样的文件会自动重命名。</p>
+<p>使用 <code>xx.php[空格]</code> ， <code>xx.php.</code>， <code>xx.php/</code>， <code>xx.php::$DATA</code> 上传脚本文件。</p>
+<h3 id="短文件名猜解漏洞"><a href="#短文件名猜解漏洞" class="headerlink" title="短文件名猜解漏洞"></a>短文件名猜解漏洞</h3><p>漏洞描述：为了兼容16位MS-DOS程序，Windows为文件名较长（length&gt;9）的文件和文件夹生成了对应的DOS 8.3 短文件名。</p>
+<p><strong>短文件名命名格式</strong></p>
+<ul>
+<li>全部大写</li>
+<li>显示6位</li>
+<li>超过6位用~1表示</li>
+<li>不显示特殊字符</li>
+<li>后缀最多显示三位，其余的被截断</li>
+</ul>
+<p>验证手法：在地址栏中插入一个存在通配符* 和?的请求（<code>url/a*~1*</code>），当IIS接收到一个文件路径中包含~的请求时，根据文件是否存在，得到的返回值是不同的，文件存在返回404，文件不存在返回400</p>
+<p>工具：IIS_shortname_Scanner</p>
+<h2 id="Apache"><a href="#Apache" class="headerlink" title="Apache"></a>Apache</h2><h4 id="Apache-1-x-2-x"><a href="#Apache-1-x-2-x" class="headerlink" title="Apache 1.x~2.x"></a>Apache 1.x~2.x</h4><ul>
+<li><strong>后缀解析</strong></li>
+</ul>
+<p>形式：<a target="_blank" rel="noopener" href="http://www.xxxx.xxx.com/test.php.php123.qwd.wad">www.xxxx.xxx.com/test.php.php123.qwd.wad</a></p>
+<p>该版本解析文件的原则：在解析文件名的时候是<strong>从右向左</strong>依次识别，用于<strong>绕过基于黑名单的检查</strong></p>
+<h4 id="目录遍历漏洞"><a href="#目录遍历漏洞" class="headerlink" title="目录遍历漏洞"></a>目录遍历漏洞</h4><p>漏洞描述：配置文件 http.conf 配置Options问题</p>
+<p>Options 设置了+Indexes Apache存在目录遍历</p>
+<h4 id="CVE-0A绕过"><a href="#CVE-0A绕过" class="headerlink" title="CVE %0A绕过"></a>CVE %0A绕过</h4><p>漏洞描述：上传文件名后加%0A，可以直接解析</p>
+<p> Apache配置使用了&lt;FileMatch&gt;:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;FilesMatch \.php$&gt;  </span><br><span class="line">	SetHandler application&#x2F;x-httpd-php</span><br><span class="line">&lt;&#x2F;FilesMatch&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="lighttped组件"><a href="#lighttped组件" class="headerlink" title="lighttped组件"></a>lighttped组件</h4><p>xxx.jpg/xx.php</p>
+<h2 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h2><h4 id="Nginx-lt-8-037"><a href="#Nginx-lt-8-037" class="headerlink" title="Nginx&lt;8.037"></a>Nginx&lt;8.037</h4><p>在默认Fast-CGI开启状态下，访问路径为  xxx.jpg/.php，jpg文件会以php形式解析</p>
+<p>形式：<a target="_blank" rel="noopener" href="http://www.xxx.com/xx.jpg/.php">www.xxx.com/xx.jpg/.php</a></p>
+<p>空字节漏洞</p>
+<p>影响版本：0.5、0.6、0.7&lt;=0.7.65、0.8&lt;= 0.8.37</p>
+<h4 id="Fast-CGI关闭"><a href="#Fast-CGI关闭" class="headerlink" title="Fast-CGI关闭"></a>Fast-CGI关闭</h4><p>在Fast-CGI关闭的情况下， Nginx 仍然存在解析漏洞： 在文件路径(xx.jpg)后面加上 <code>%00.php</code> ， 即 <code>xx.jpg%00.php</code> 会被当做 php 文件来解析</p>
+<h4 id="CVE-2013-4547"><a href="#CVE-2013-4547" class="headerlink" title="CVE-2013-4547"></a>CVE-2013-4547</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a.jpg\x20\x00.php</span><br></pre></td></tr></table></figure>
+
+<h4 id="配置错误"><a href="#配置错误" class="headerlink" title="配置错误"></a>配置错误</h4><h5 id="目录穿越"><a href="#目录穿越" class="headerlink" title="目录穿越"></a>目录穿越</h5><p>如果配置中存在类似 <code>location /foo &#123; alias /bar/; &#125;</code> 的配置时，<code>/foo../</code> 会被解析为 <code>/bar/../</code> 从而导致目录穿越的发生。</p>
+<h5 id="目录遍历"><a href="#目录遍历" class="headerlink" title="目录遍历"></a>目录遍历</h5><p>配置中 <code>autoindex on</code> 开启时，Nginx中存在目录遍历漏洞。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Alexhirchi</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2021/04/30/Red/%E5%B8%B8%E8%A7%81web%E6%BC%8F%E6%B4%9E/%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%BC%8F%E6%B4%9E/">http://example.com/2021/04/30/Red/%E5%B8%B8%E8%A7%81web%E6%BC%8F%E6%B4%9E/%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%BC%8F%E6%B4%9E/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Alexchihir'blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/web%E5%AE%89%E5%85%A8/">web安全</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/04/30/Red/%E5%B8%B8%E8%A7%81web%E6%BC%8F%E6%B4%9E/%E6%B3%A8%E5%85%A5/"><img class="prev-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">注入</div></div></a></div><div class="next-post pull-right"><a href="/2021/04/28/hello-world/"><img class="next-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Hello World</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/04/30/Red/常见web漏洞/文件上传/" title="文件上传"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-29</div><div class="title">文件上传</div></div></a></div><div><a href="/2021/04/30/Red/常见web漏洞/注入/" title="注入"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-29</div><div class="title">注入</div></div></a></div><div><a href="/2021/04/30/Red/常见web漏洞/命令执行代码执行/" title="命令执行代码执行"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-29</div><div class="title">命令执行代码执行</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/show/test.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Alexhirchi</div><div class="author-info__description">月亮与六便士</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">12</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="toc-number">1.</span> <span class="toc-text">中间件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#IIS"><span class="toc-number">1.1.</span> <span class="toc-text">IIS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#IIS5-x-6-x"><span class="toc-number">1.1.1.</span> <span class="toc-text">IIS5.x-6.x</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IIS6-0-CVE-%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA"><span class="toc-number">1.1.2.</span> <span class="toc-text">IIS6.0 CVE 缓冲区溢出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IIS7-0-IIS7-5"><span class="toc-number">1.1.3.</span> <span class="toc-text">IIS7.0-IIS7.5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PUT%E6%BC%8F%E6%B4%9E"><span class="toc-number">1.1.4.</span> <span class="toc-text">PUT漏洞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Windows%E7%89%B9%E6%80%A7"><span class="toc-number">1.1.5.</span> <span class="toc-text">Windows特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%AD%E6%96%87%E4%BB%B6%E5%90%8D%E7%8C%9C%E8%A7%A3%E6%BC%8F%E6%B4%9E"><span class="toc-number">1.1.6.</span> <span class="toc-text">短文件名猜解漏洞</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Apache"><span class="toc-number">1.2.</span> <span class="toc-text">Apache</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Apache-1-x-2-x"><span class="toc-number">1.2.0.1.</span> <span class="toc-text">Apache 1.x~2.x</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E9%81%8D%E5%8E%86%E6%BC%8F%E6%B4%9E"><span class="toc-number">1.2.0.2.</span> <span class="toc-text">目录遍历漏洞</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CVE-0A%E7%BB%95%E8%BF%87"><span class="toc-number">1.2.0.3.</span> <span class="toc-text">CVE %0A绕过</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#lighttped%E7%BB%84%E4%BB%B6"><span class="toc-number">1.2.0.4.</span> <span class="toc-text">lighttped组件</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nginx"><span class="toc-number">1.3.</span> <span class="toc-text">Nginx</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Nginx-lt-8-037"><span class="toc-number">1.3.0.1.</span> <span class="toc-text">Nginx&lt;8.037</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Fast-CGI%E5%85%B3%E9%97%AD"><span class="toc-number">1.3.0.2.</span> <span class="toc-text">Fast-CGI关闭</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CVE-2013-4547"><span class="toc-number">1.3.0.3.</span> <span class="toc-text">CVE-2013-4547</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E9%94%99%E8%AF%AF"><span class="toc-number">1.3.0.4.</span> <span class="toc-text">配置错误</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E7%A9%BF%E8%B6%8A"><span class="toc-number">1.3.0.4.1.</span> <span class="toc-text">目录穿越</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E9%81%8D%E5%8E%86"><span class="toc-number">1.3.0.4.2.</span> <span class="toc-text">目录遍历</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/05/25/tag/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%A7%A3%E6%9E%90%E4%B8%8E%E7%BC%96%E7%A0%81%E7%BB%95%E8%BF%87/" title="浏览器解析与编码绕过"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="浏览器解析与编码绕过"/></a><div class="content"><a class="title" href="/2021/05/25/tag/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%A7%A3%E6%9E%90%E4%B8%8E%E7%BC%96%E7%A0%81%E7%BB%95%E8%BF%87/" title="浏览器解析与编码绕过">浏览器解析与编码绕过</a><time datetime="2021-05-24T22:00:00.000Z" title="发表于 2021-05-24 22:00:00">2021-05-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/05/24/tag/apache%20Tomcat%20%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E(CVE-2020-1938)/" title="apache Tomcat 文件包含漏洞（CVE-2020-1938）"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="apache Tomcat 文件包含漏洞（CVE-2020-1938）"/></a><div class="content"><a class="title" href="/2021/05/24/tag/apache%20Tomcat%20%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E(CVE-2020-1938)/" title="apache Tomcat 文件包含漏洞（CVE-2020-1938）">apache Tomcat 文件包含漏洞（CVE-2020-1938）</a><time datetime="2021-05-23T22:00:00.000Z" title="发表于 2021-05-23 22:00:00">2021-05-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/05/17/tag/phpmyadmin%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0(CVE-2018-12613)/" title="phpmyadmin文件包含漏洞复现（CVE-2018-12613）"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="phpmyadmin文件包含漏洞复现（CVE-2018-12613）"/></a><div class="content"><a class="title" href="/2021/05/17/tag/phpmyadmin%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0(CVE-2018-12613)/" title="phpmyadmin文件包含漏洞复现（CVE-2018-12613）">phpmyadmin文件包含漏洞复现（CVE-2018-12613）</a><time datetime="2021-05-16T22:00:00.000Z" title="发表于 2021-05-16 22:00:00">2021-05-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/04/30/Blue/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" title="工具使用"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="工具使用"/></a><div class="content"><a class="title" href="/2021/04/30/Blue/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" title="工具使用">工具使用</a><time datetime="2021-04-29T18:39:49.000Z" title="发表于 2021-04-29 18:39:49">2021-04-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/04/30/Red/%E5%B8%B8%E8%A7%81web%E6%BC%8F%E6%B4%9E/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C/" title="命令执行代码执行"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="命令执行代码执行"/></a><div class="content"><a class="title" href="/2021/04/30/Red/%E5%B8%B8%E8%A7%81web%E6%BC%8F%E6%B4%9E/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C/" title="命令执行代码执行">命令执行代码执行</a><time datetime="2021-04-29T18:39:49.000Z" title="发表于 2021-04-29 18:39:49">2021-04-29</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By Alexhirchi</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
